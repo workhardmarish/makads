@@ -78,15 +78,15 @@ body {
 /* ── HERO ── */
 .hero {
   padding: 140px 48px 80px;
-  background: linear-gradient(130deg, #e4dcff 0%, #d4e6ff 55%, #ddf0ff 100%);
+  background: linear-gradient(130deg, #ede9ff 0%, #dceeff 50%, #e6f3ff 100%);
   position: relative; overflow: hidden; min-height: 100vh;
   display: flex; align-items: center;
 }
-.hero-content { position: relative; z-index: 2; max-width: 580px; }
+.hero-content { position: relative; z-index: 2; max-width: 720px; }
 
 .hero-blob {
-  position: absolute; right: -80px; top: -100px;
-  width: 560px; height: 560px; opacity: 0.55;
+  position: absolute; right: -120px; top: -80px;
+  width: 680px; height: 680px;
   pointer-events: none;
   animation: blobFloat 8s ease-in-out infinite;
 }
@@ -449,7 +449,7 @@ body {
     <li><a href="#services">Услуги</a></li>
     <li><a href="#how">Как работаю</a></li>
     <li><a href="#cases">Кейсы</a></li>
-    <li><a href="#blog">Блог</a></li>
+    <li><a href="blog.html">Блог</a></li>
   </ul>
   <a href="#contact" class="nav-btn">Оставить заявку</a>
 </nav>
@@ -458,14 +458,15 @@ body {
 <section class="hero">
   <svg class="hero-blob" viewBox="0 0 560 560" xmlns="http://www.w3.org/2000/svg">
     <defs>
-      <radialGradient id="hbg" cx="32%" cy="28%" r="68%">
-        <stop offset="0%" stop-color="#C8B8FF"/>
-        <stop offset="40%" stop-color="#7A50F0"/>
-        <stop offset="75%" stop-color="#3820CC"/>
-        <stop offset="100%" stop-color="#160870"/>
+      <radialGradient id="hbg" cx="38%" cy="32%" r="66%">
+        <stop offset="0%" stop-color="#F0ECFF"/>
+        <stop offset="28%" stop-color="#D8CCFF"/>
+        <stop offset="58%" stop-color="#B8A6F0"/>
+        <stop offset="85%" stop-color="#9880E0"/>
+        <stop offset="100%" stop-color="#8070CC"/>
       </radialGradient>
-      <radialGradient id="hsh" cx="26%" cy="20%" r="32%">
-        <stop offset="0%" stop-color="rgba(255,255,255,0.88)"/>
+      <radialGradient id="hsh" cx="28%" cy="22%" r="30%">
+        <stop offset="0%" stop-color="rgba(255,255,255,0.92)"/>
         <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
       </radialGradient>
       <filter id="hsf"><feGaussianBlur stdDeviation="2"/></filter>
@@ -488,8 +489,9 @@ body {
              C16,198 56,186 62,144 C68,102 48,56 82,30
              C112,6 148,24 180,16 C214,8 252,24 280,24Z"
           fill="url(#hsh)" filter="url(#hsf)"/>
-    <ellipse cx="194" cy="144" rx="64" ry="40" fill="rgba(255,255,255,0.32)" filter="url(#hsf)"/>
-    <ellipse cx="184" cy="134" rx="24" ry="15" fill="rgba(255,255,255,0.58)" filter="url(#hsf)"/>
+    <ellipse cx="194" cy="140" rx="70" ry="44" fill="rgba(255,255,255,0.38)" filter="url(#hsf)"/>
+    <ellipse cx="182" cy="128" rx="28" ry="17" fill="rgba(255,255,255,0.65)" filter="url(#hsf)"/>
+    <ellipse cx="400" cy="430" rx="50" ry="22" fill="rgba(200,185,255,0.28)" transform="rotate(-25 400 430)" filter="url(#hsf)"/>
   </svg>
 
   <div class="hero-content">
@@ -681,7 +683,7 @@ body {
 <section id="blog" class="section" style="background:#f5f3ff;">
   <div class="section-header">
     <div class="section-label">Блог</div>
-    <a href="#" class="more-link">Все статьи →</a>
+    <a href="blog.html" class="more-link">Все статьи →</a>
   </div>
   <div class="blog-grid">
     <a href="#" class="post reveal reveal-d1">
@@ -817,7 +819,7 @@ body {
 <footer class="footer">
   <div class="footer-top">
     <a href="#" class="footer-logo">Mak<span>ads</span></a>
-    <a href="https://t.me/СЮДА_ВСТАВИТЬ_ССЫЛКУ" class="footer-tg" target="_blank" rel="noopener">
+    <a href="https://t.me/+mLtKrqMsWK05MjQy" class="footer-tg" target="_blank" rel="noopener">
       <i class="ti ti-brand-telegram" aria-hidden="true"></i>
       <span>Telegram-канал</span>
     </a>
