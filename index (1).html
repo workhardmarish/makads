@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Makads — Интернет-реклама для бизнеса</title>
+<meta name="description" content="Настраиваю Яндекс.Директ, VK и Telegram Ads для малого и среднего бизнеса. С отчётами и без исчезновений после запуска.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --c-bg:        #f0ecff;
+  --c-bg2:       #f5f3ff;
+  --c-white:     #ffffff;
+  --c-dark:      #120A50;
+  --c-mid:       #2E2A55;
+  --c-muted:     #5050A0;
+  --c-border:    rgba(100,80,220,0.12);
+  --c-purple:    #4A35D4;
+  --c-purple2:   #5B3FD4;
+  --c-purple3:   #7B5CF5;
+  --c-purple4:   #4A3890;
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   18px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--c-bg);
+  color: var(--c-dark);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* ── REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .5s ease, transform .5s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: .05s; }
+.reveal-d2 { transition-delay: .12s; }
+.reveal-d3 { transition-delay: .19s; }
+.reveal-d4 { transition-delay: .26s; }
+
+/* ── NAV ── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 48px;
+  background: rgba(240,236,255,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 0.5px solid var(--c-border);
+}
+.nav-logo { font-size: 19px; font-weight: 700; color: #2A1AA0; letter-spacing: -0.5px; text-decoration: none; }
+.nav-logo span { color: var(--c-purple3); }
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a { font-size: 14px; color: #3A3560; text-decoration: none; transition: color .15s; }
+.nav-links a:hover { color: var(--c-purple); }
+.nav-btn {
+  background: var(--c-purple); color: #fff;
+  font-size: 14px; font-weight: 500;
+  border: none; border-radius: var(--radius-sm);
+  padding: 10px 20px; cursor: pointer;
+  text-decoration: none;
+  transition: background .15s, transform .15s;
+}
+.nav-btn:hover { background: #5B46E5; transform: translateY(-1px); }
+
+/* ── HERO ── */
+.hero {
+  padding: 140px 48px 80px;
+  background: linear-gradient(130deg, #e4dcff 0%, #d4e6ff 55%, #ddf0ff 100%);
+  position: relative; overflow: hidden; min-height: 100vh;
+  display: flex; align-items: center;
+}
+.hero-content { position: relative; z-index: 2; max-width: 580px; }
+
+.hero-blob {
+  position: absolute; right: -80px; top: -100px;
+  width: 560px; height: 560px; opacity: 0.55;
+  pointer-events: none;
+  animation: blobFloat 8s ease-in-out infinite;
+}
+@keyframes blobFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%       { transform: translateY(-22px) rotate(5deg); }
+}
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.75);
+  border: 0.5px solid rgba(100,80,220,0.2);
+  border-radius: 20px; padding: 5px 16px; margin-bottom: 28px;
+  animation: fadeUp .5s ease both;
+}
+.hero-eyebrow-dot {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--c-purple3);
+  animation: pulse 2.5s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.65); }
+}
+.hero-eyebrow span { font-size: 12px; color: #4A30B0; }
+
+.hero h1 {
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 700; line-height: 1.08;
+  letter-spacing: -2px; color: var(--c-dark);
+  margin-bottom: 18px;
+  animation: fadeUp .55s .1s ease both;
+}
+.hero h1 em { font-style: normal; color: var(--c-purple2); }
+
+.hero-sub {
+  font-size: 17px; color: var(--c-mid);
+  max-width: 440px; line-height: 1.65; margin-bottom: 28px;
+  animation: fadeUp .55s .18s ease both;
+}
+
+.hero-stats {
+  display: flex; gap: 28px; align-items: center;
+  margin-bottom: 36px;
+  animation: fadeUp .55s .24s ease both;
+}
+.hero-stat { display: flex; flex-direction: column; }
+.hero-stat-val {
+  font-size: 28px; font-weight: 700; color: var(--c-dark);
+  letter-spacing: -1px; line-height: 1;
+}
+.hero-stat-val em { font-style: normal; color: var(--c-purple2); }
+.hero-stat-label { font-size: 12px; color: var(--c-muted); margin-top: 4px; }
+.hero-stat-div { width: 0.5px; height: 40px; background: rgba(100,80,220,0.2); }
+
+.hero-btns {
+  display: flex; gap: 14px; flex-wrap: wrap;
+  animation: fadeUp .55s .3s ease both;
+}
+.btn-main {
+  background: var(--c-purple); color: #fff;
+  font-size: 15px; font-weight: 500;
+  border: none; border-radius: var(--radius-md);
+  padding: 14px 28px; cursor: pointer; text-decoration: none;
+  transition: background .15s, transform .15s, box-shadow .15s;
+  display: inline-block;
+}
+.btn-main:hover { background: #5B46E5; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(74,53,212,0.25); }
+.btn-ghost {
+  background: rgba(255,255,255,0.75); color: #3A28B0;
+  font-size: 15px; font-weight: 500;
+  border: 0.5px solid rgba(74,53,212,0.3);
+  border-radius: var(--radius-md);
+  padding: 14px 28px; cursor: pointer; text-decoration: none;
+  transition: background .15s, border-color .15s;
+  display: inline-block;
+}
+.btn-ghost:hover { background: #fff; border-color: rgba(74,53,212,0.5); }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── SECTION SHARED ── */
+.section { padding: 72px 48px; border-top: 0.5px solid var(--c-border); }
+.section-label {
+  font-size: 11px; color: var(--c-purple4);
+  letter-spacing: 1.5px; text-transform: uppercase;
+  font-weight: 500; margin-bottom: 24px;
+}
+.section-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: 24px;
+}
+.section-header .section-label { margin-bottom: 0; }
+.more-link { font-size: 13px; color: var(--c-purple2); text-decoration: none; font-weight: 500; transition: opacity .15s; }
+.more-link:hover { opacity: 0.7; }
+
+/* ── SERVICE CARDS ── */
+.cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+
+.card {
+  background: var(--c-white);
+  border: 0.5px solid var(--c-border);
+  border-radius: var(--radius-lg); padding: 28px 24px;
+  transition: transform .2s, box-shadow .2s;
+}
+.card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(74,53,212,0.1); }
+.card-accent {
+  background: linear-gradient(140deg, #6644EE, #4A8AF4);
+  border: none;
+}
+.card-accent:hover { box-shadow: 0 12px 32px rgba(74,53,212,0.28); }
+
+.card-icon {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: rgba(123,92,245,0.12);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+}
+.card-icon i { font-size: 18px; color: #6040C8; }
+.card-accent .card-icon { background: rgba(255,255,255,0.2); }
+.card-accent .card-icon i { color: #fff; }
+
+.card h3 { font-size: 16px; font-weight: 500; color: var(--c-dark); margin-bottom: 8px; }
+.card p  { font-size: 13px; color: var(--c-mid); line-height: 1.6; }
+.card-accent h3 { color: #fff; }
+.card-accent p  { color: rgba(255,255,255,0.85); }
+
+.price-val { font-size: 24px; font-weight: 700; color: var(--c-dark); letter-spacing: -0.5px; margin-top: 18px; }
+.price-val em { font-style: normal; color: var(--c-purple2); }
+.price-label { font-size: 12px; color: #3A3070; margin-top: 3px; }
+.card-accent .price-val { color: #fff; }
+.card-accent .price-val em { color: rgba(255,255,255,0.75); }
+.card-accent .price-label { color: rgba(255,255,255,0.7); }
+
+/* ── HOW ── */
+.steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.step {
+  background: var(--c-bg2);
+  border: 0.5px solid var(--c-border);
+  border-radius: var(--radius-lg); padding: 24px 20px;
+  position: relative;
+  transition: border-color .2s;
+}
+.step:hover { border-color: rgba(100,80,220,0.35); }
+.step-num { font-size: 11px; font-weight: 500; color: var(--c-purple3); letter-spacing: 1px; margin-bottom: 14px; }
+.step h3 { font-size: 15px; font-weight: 500; color: var(--c-dark); margin-bottom: 8px; }
+.step p  { font-size: 13px; color: var(--c-mid); line-height: 1.6; }
+.step-arrow {
+  position: absolute; right: -10px; top: 50%; transform: translateY(-50%);
+  width: 20px; height: 20px; background: #fff;
+  border: 0.5px solid rgba(100,80,220,0.2); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; z-index: 1;
+}
+.step-arrow i { font-size: 11px; color: var(--c-purple3); }
+
+/* ── WHY ── */
+.why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.why-card {
+  background: var(--c-white);
+  border: 0.5px solid var(--c-border);
+  border-radius: var(--radius-lg); padding: 24px 22px;
+  display: flex; gap: 16px; align-items: flex-start;
+  transition: transform .2s, box-shadow .2s;
+}
+.why-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(74,53,212,0.08); }
+.why-icon {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: rgba(123,92,245,0.1);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.why-icon i { font-size: 18px; color: #6040C8; }
+.why-card h3 { font-size: 15px; font-weight: 500; color: var(--c-dark); margin-bottom: 6px; }
+.why-card p  { font-size: 13px; color: var(--c-mid); line-height: 1.6; }
+
+/* ── CASES ── */
+.cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.case {
+  background: var(--c-white);
+  border: 0.5px solid var(--c-border);
+  border-radius: var(--radius-lg); padding: 26px 22px;
+  display: flex; flex-direction: column; gap: 16px;
+  transition: transform .2s, box-shadow .2s;
+}
+.case:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(74,53,212,0.1); }
+.case-top { display: flex; justify-content: space-between; align-items: flex-start; }
+.case-niche {
+  font-size: 11px; font-weight: 500; color: var(--c-purple4);
+  letter-spacing: 1px; text-transform: uppercase;
+  background: var(--c-bg2); border-radius: 6px; padding: 4px 10px;
+}
+.case-platform { font-size: 11px; color: var(--c-purple3); font-weight: 500; }
+.case-metric-val { font-size: 28px; font-weight: 700; color: var(--c-dark); letter-spacing: -1px; line-height: 1; }
+.case-metric-val em { font-style: normal; color: var(--c-purple2); }
+.case-metric-label { font-size: 12px; color: var(--c-mid); margin-top: 3px; }
+.case-divider { width: 100%; height: 0.5px; background: var(--c-border); }
+.case-desc { font-size: 13px; color: var(--c-mid); line-height: 1.6; }
+.nda-tag { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; color: #8080B0; margin-top: auto; }
+.nda-tag i { font-size: 13px; }
+
+/* ── BLOG ── */
+.blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.post {
+  background: var(--c-white);
+  border: 0.5px solid var(--c-border);
+  border-radius: var(--radius-lg); overflow: hidden;
+  display: flex; flex-direction: column;
+  text-decoration: none;
+  transition: transform .2s, box-shadow .2s;
+}
+.post:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(74,53,212,0.1); }
+.post:hover .post-thumb { transform: scale(1.04); }
+.post:hover .post-arrow { transform: translateX(3px); }
+
+.post-thumb-wrap { height: 100px; overflow: hidden; flex-shrink: 0; }
+.post-thumb { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; transition: transform .35s ease; }
+.post-thumb-1 { background: linear-gradient(135deg, #c8b8ff, #7B5CF5); }
+.post-thumb-2 { background: linear-gradient(135deg, #b8d8ff, #4A7EE8); }
+.post-thumb-3 { background: linear-gradient(135deg, #d0b8ff, #9044D4); }
+.post-thumb i { font-size: 30px; color: rgba(255,255,255,0.65); }
+
+.post-body { padding: 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.post-tag {
+  font-size: 10px; font-weight: 500; letter-spacing: 1px;
+  text-transform: uppercase; color: var(--c-purple2);
+  background: var(--c-bg2); border-radius: 5px;
+  padding: 3px 9px; display: inline-block; align-self: flex-start;
+}
+.post h3 { font-size: 14px; font-weight: 500; color: var(--c-dark); line-height: 1.45; }
+.post-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: auto; padding-top: 12px;
+  border-top: 0.5px solid rgba(100,80,220,0.08);
+}
+.post-date { font-size: 12px; color: #8080B0; }
+.post-arrow { font-size: 15px; color: var(--c-purple3); transition: transform .2s; }
+
+/* ── FORM ── */
+.form-section {
+  padding: 80px 48px;
+  background: linear-gradient(130deg, #e4dcff 0%, #d4e6ff 55%, #ddf0ff 100%);
+  border-top: 0.5px solid var(--c-border);
+  position: relative; overflow: hidden;
+}
+.form-blob {
+  position: absolute; right: -60px; bottom: -80px;
+  width: 320px; height: 320px; opacity: 0.4;
+  pointer-events: none;
+  animation: blobFloat 10s ease-in-out infinite;
+}
+.form-top {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 56px;
+  align-items: start; margin-bottom: 40px;
+}
+.form-title { font-size: clamp(28px, 3.5vw, 40px); font-weight: 700; line-height: 1.1; letter-spacing: -1.5px; color: var(--c-dark); }
+.form-title em { font-style: normal; color: var(--c-purple2); }
+.form-desc { font-size: 15px; color: var(--c-mid); line-height: 1.65; padding-top: 8px; }
+
+.fields { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 28px; }
+.field {
+  background: rgba(255,255,255,0.8);
+  border: 0.5px solid rgba(100,80,220,0.22);
+  border-radius: var(--radius-md);
+  padding: 14px 18px; font-size: 15px; color: var(--c-dark);
+  font-family: inherit; outline: none; width: 100%;
+  transition: border-color .15s, background .15s;
+}
+.field::placeholder { color: #7070A0; }
+.field:focus { border-color: var(--c-purple3); background: #fff; }
+
+.checks-label {
+  font-size: 11px; font-weight: 500; color: #3A2890;
+  letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px;
+}
+.checks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 32px; }
+.check-item { display: flex; align-items: center; gap: 11px; cursor: pointer; user-select: none; }
+.check-box {
+  width: 20px; height: 20px; border-radius: 6px;
+  border: 1.5px solid rgba(100,80,220,0.3);
+  background: rgba(255,255,255,0.8); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .15s, border-color .15s;
+}
+.check-item.checked .check-box { background: var(--c-purple2); border-color: var(--c-purple2); }
+.check-box i { font-size: 12px; color: #fff; display: none; }
+.check-item.checked .check-box i { display: block; }
+.check-item span { font-size: 14px; color: var(--c-mid); transition: color .15s; }
+.check-item.checked span { color: var(--c-dark); font-weight: 500; }
+
+.form-submit { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.submit-btn {
+  background: var(--c-purple); color: #fff;
+  font-size: 16px; font-weight: 500;
+  border: none; border-radius: var(--radius-md);
+  padding: 15px 36px; cursor: pointer;
+  transition: background .15s, transform .15s, box-shadow .15s;
+}
+.submit-btn:hover { background: #5B46E5; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(74,53,212,0.28); }
+.form-note { font-size: 13px; color: #4040A0; }
+
+/* ── FOOTER ── */
+.footer { background: #120A50; padding: 32px 48px 24px; }
+.footer-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+.footer-logo { font-size: 18px; font-weight: 700; color: #fff; letter-spacing: -0.5px; text-decoration: none; }
+.footer-logo span { color: #9B80FF; }
+.footer-tg {
+  display: flex; align-items: center; gap: 9px; text-decoration: none;
+  background: rgba(255,255,255,0.08); border: 0.5px solid rgba(255,255,255,0.15);
+  border-radius: var(--radius-sm); padding: 9px 18px;
+  transition: background .15s;
+}
+.footer-tg:hover { background: rgba(255,255,255,0.15); }
+.footer-tg i { font-size: 17px; color: #9B80FF; }
+.footer-tg span { font-size: 14px; color: #C0B0FF; font-weight: 500; }
+.footer-divider { width: 100%; height: 0.5px; background: rgba(255,255,255,0.08); margin-bottom: 18px; }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.footer-copy { font-size: 13px; color: rgba(255,255,255,0.3); }
+.footer-legal { display: flex; gap: 24px; flex-wrap: wrap; }
+.footer-legal a { font-size: 13px; color: rgba(255,255,255,0.4); text-decoration: none; transition: color .15s; }
+.footer-legal a:hover { color: rgba(255,255,255,0.75); }
+
+/* ── MOBILE ── */
+@media (max-width: 900px) {
+  .nav { padding: 14px 20px; }
+  .nav-links { display: none; }
+  .hero { padding: 110px 20px 60px; min-height: auto; }
+  .hero-blob { width: 320px; height: 320px; right: -100px; top: 0; opacity: 0.35; }
+  .section { padding: 48px 20px; }
+  .cards-grid, .steps-grid, .cases-grid, .blog-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr; }
+  .form-top { grid-template-columns: 1fr; gap: 20px; }
+  .fields { grid-template-columns: 1fr; }
+  .checks { grid-template-columns: 1fr 1fr; }
+  .footer { padding: 28px 20px 20px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+  .hero-stats { flex-wrap: wrap; gap: 16px; }
+}
+
+@media (max-width: 600px) {
+  .hero h1 { font-size: 32px; letter-spacing: -1.5px; }
+  .cards-grid, .steps-grid, .cases-grid, .blog-grid, .why-grid { grid-template-columns: 1fr; }
+  .checks { grid-template-columns: 1fr; }
+  .hero-btns { flex-direction: column; }
+  .btn-main, .btn-ghost { text-align: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .hero-blob, .form-blob { animation: none; transition: none; }
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#" class="nav-logo">Mak<span>ads</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Услуги</a></li>
+    <li><a href="#how">Как работаю</a></li>
+    <li><a href="#cases">Кейсы</a></li>
+    <li><a href="#blog">Блог</a></li>
+  </ul>
+  <a href="#contact" class="nav-btn">Оставить заявку</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <svg class="hero-blob" viewBox="0 0 560 560" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="hbg" cx="32%" cy="28%" r="68%">
+        <stop offset="0%" stop-color="#C8B8FF"/>
+        <stop offset="40%" stop-color="#7A50F0"/>
+        <stop offset="75%" stop-color="#3820CC"/>
+        <stop offset="100%" stop-color="#160870"/>
+      </radialGradient>
+      <radialGradient id="hsh" cx="26%" cy="20%" r="32%">
+        <stop offset="0%" stop-color="rgba(255,255,255,0.88)"/>
+        <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+      </radialGradient>
+      <filter id="hsf"><feGaussianBlur stdDeviation="2"/></filter>
+    </defs>
+    <path d="M280,24 C305,24 338,46 360,30 C386,10 424,18 442,46
+             C462,82 448,122 478,142 C514,168 544,194 540,234
+             C536,274 506,292 516,332 C530,378 528,420 496,444
+             C462,470 422,456 390,478 C356,502 334,542 294,546
+             C252,550 228,510 190,504 C148,496 104,518 74,488
+             C42,456 58,412 42,372 C22,324 -4,282 6,240
+             C16,198 56,186 62,144 C68,102 48,56 82,30
+             C112,6 148,24 180,16 C214,8 252,24 280,24Z"
+          fill="url(#hbg)"/>
+    <path d="M280,24 C305,24 338,46 360,30 C386,10 424,18 442,46
+             C462,82 448,122 478,142 C514,168 544,194 540,234
+             C536,274 506,292 516,332 C530,378 528,420 496,444
+             C462,470 422,456 390,478 C356,502 334,542 294,546
+             C252,550 228,510 190,504 C148,496 104,518 74,488
+             C42,456 58,412 42,372 C22,324 -4,282 6,240
+             C16,198 56,186 62,144 C68,102 48,56 82,30
+             C112,6 148,24 180,16 C214,8 252,24 280,24Z"
+          fill="url(#hsh)" filter="url(#hsf)"/>
+    <ellipse cx="194" cy="144" rx="64" ry="40" fill="rgba(255,255,255,0.32)" filter="url(#hsf)"/>
+    <ellipse cx="184" cy="134" rx="24" ry="15" fill="rgba(255,255,255,0.58)" filter="url(#hsf)"/>
+  </svg>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-dot"></div>
+      <span>Интернет-реклама для бизнеса</span>
+    </div>
+
+    <h1>Запускаю рекламу<br>для бизнеса —<br>и <em>объясняю,<br>что происходит</em></h1>
+
+    <p class="hero-sub">Настраиваю Яндекс.Директ, VK и Telegram Ads для малого и среднего бизнеса. С отчётами и без исчезновений после запуска.</p>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-val"><em class="counter" data-target="40">0</em>+</div>
+        <div class="hero-stat-label">запущенных кампаний</div>
+      </div>
+      <div class="hero-stat-div"></div>
+      <div class="hero-stat">
+        <div class="hero-stat-val"><em class="counter" data-target="5">0</em> лет</div>
+        <div class="hero-stat-label">в интернет-рекламе</div>
+      </div>
+      <div class="hero-stat-div"></div>
+      <div class="hero-stat">
+        <div class="hero-stat-val"><em>4</em> площадки</div>
+        <div class="hero-stat-label">в одних руках</div>
+      </div>
+    </div>
+
+    <div class="hero-btns">
+      <a href="#contact" class="btn-main">Узнать, где теряю деньги</a>
+      <a href="#services" class="btn-ghost">Услуги и цены →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section" style="background:#f5f3ff;">
+  <div class="section-label">Услуги</div>
+  <div class="cards-grid">
+    <div class="card reveal reveal-d1">
+      <div class="card-icon" aria-hidden="true"><i class="ti ti-search"></i></div>
+      <h3>Аудит рекламы</h3>
+      <p>Разберу кампании и покажу, где теряются деньги. Получите детальный отчёт с приоритетами.</p>
+      <div class="price-val"><em>5–10</em> тыс ₽</div>
+      <div class="price-label">за аудит · срок 1–3 дня</div>
+    </div>
+    <div class="card card-accent reveal reveal-d2">
+      <div class="card-icon" aria-hidden="true"><i class="ti ti-rocket"></i></div>
+      <h3>Настройка с нуля</h3>
+      <p>Под ключ — от сбора семантики до первых заявок. Сдача с отчётом и инструкцией.</p>
+      <div class="price-val"><em>20–50</em> тыс ₽</div>
+      <div class="price-label">за настройку · зависит от объёма</div>
+    </div>
+    <div class="card reveal reveal-d3">
+      <div class="card-icon" aria-hidden="true"><i class="ti ti-chart-line"></i></div>
+      <h3>Ведение рекламы</h3>
+      <p>Оптимизирую ставки, тестирую объявления, отчитываюсь цифрами каждый месяц.</p>
+      <div class="price-val"><em>20–40</em> тыс ₽</div>
+      <div class="price-label">в месяц</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section id="how" class="section" style="background:#fff;">
+  <div class="section-label">Как работаю</div>
+  <div class="steps-grid">
+    <div class="step reveal reveal-d1">
+      <div class="step-num">01</div>
+      <h3>Разбираемся в задаче</h3>
+      <p>Обсуждаем бизнес, продукт и цель — заявки, звонки или продажи</p>
+      <div class="step-arrow"><i class="ti ti-arrow-right"></i></div>
+    </div>
+    <div class="step reveal reveal-d2">
+      <div class="step-num">02</div>
+      <h3>Готовлю стратегию</h3>
+      <p>Собираю семантику, строю структуру кампаний, согласовываю до запуска</p>
+      <div class="step-arrow"><i class="ti ti-arrow-right"></i></div>
+    </div>
+    <div class="step reveal reveal-d3">
+      <div class="step-num">03</div>
+      <h3>Запускаю и слежу</h3>
+      <p>Настраиваю аналитику, запускаю рекламу, первые данные через 3–5 дней</p>
+      <div class="step-arrow"><i class="ti ti-arrow-right"></i></div>
+    </div>
+    <div class="step reveal reveal-d4">
+      <div class="step-num">04</div>
+      <h3>Отчитываюсь цифрами</h3>
+      <p>Каждый месяц отчёт: что сработало, что нет, план на следующий период</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="section" style="background:#f5f3ff;">
+  <div class="section-label">Почему Makads</div>
+  <div class="why-grid">
+    <div class="why-card reveal reveal-d1">
+      <div class="why-icon" aria-hidden="true"><i class="ti ti-file-description"></i></div>
+      <div>
+        <h3>Отчёты без воды</h3>
+        <p>Каждый месяц понятный отчёт с цифрами — сколько потратили, сколько пришло заявок, какая цена лида</p>
+      </div>
+    </div>
+    <div class="why-card reveal reveal-d2">
+      <div class="why-icon" aria-hidden="true"><i class="ti ti-messages"></i></div>
+      <div>
+        <h3>На связи после запуска</h3>
+        <p>Не исчезаю после старта — слежу за кампаниями, отвечаю на вопросы и объясняю, что происходит</p>
+      </div>
+    </div>
+    <div class="why-card reveal reveal-d3">
+      <div class="why-icon" aria-hidden="true"><i class="ti ti-adjustments"></i></div>
+      <div>
+        <h3>Гибко под ваш бюджет</h3>
+        <p>Работаю с малым и средним бизнесом — подбираю формат и объём работ под реальный бюджет</p>
+      </div>
+    </div>
+    <div class="why-card reveal reveal-d4">
+      <div class="why-icon" aria-hidden="true"><i class="ti ti-layout-grid"></i></div>
+      <div>
+        <h3>Все площадки в одних руках</h3>
+        <p>Яндекс.Директ, VK, Telegram Ads и Google Ads — не нужно искать отдельных специалистов</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASES -->
+<section id="cases" class="section" style="background:#fff;">
+  <div class="section-label">Кейсы</div>
+  <div class="cases-grid">
+    <div class="case reveal reveal-d1">
+      <div class="case-top">
+        <span class="case-niche">Медицина</span>
+        <span class="case-platform">Яндекс.Директ</span>
+      </div>
+      <div>
+        <div class="case-metric-val"><em>−62%</em></div>
+        <div class="case-metric-label">снижение цены заявки</div>
+      </div>
+      <div class="case-divider"></div>
+      <div>
+        <div class="case-metric-val"><em>×2.4</em></div>
+        <div class="case-metric-label">рост количества лидов</div>
+      </div>
+      <p class="case-desc">Перенастроил кампании с нуля, почистил семантику, добавил ретаргетинг. Бюджет остался прежним.</p>
+      <span class="nda-tag"><i class="ti ti-lock"></i> Клиент под NDA</span>
+    </div>
+    <div class="case reveal reveal-d2">
+      <div class="case-top">
+        <span class="case-niche">Строительство</span>
+        <span class="case-platform">VK + Директ</span>
+      </div>
+      <div>
+        <div class="case-metric-val"><em>840 ₽</em></div>
+        <div class="case-metric-label">средняя цена лида</div>
+      </div>
+      <div class="case-divider"></div>
+      <div>
+        <div class="case-metric-val"><em>38</em></div>
+        <div class="case-metric-label">заявок в первый месяц</div>
+      </div>
+      <p class="case-desc">Запустил рекламу с нуля для подрядчика по ремонту. Комбо из поиска и таргета во ВКонтакте.</p>
+      <span class="nda-tag"><i class="ti ti-lock"></i> Клиент под NDA</span>
+    </div>
+    <div class="case reveal reveal-d3">
+      <div class="case-top">
+        <span class="case-niche">Онлайн-школа</span>
+        <span class="case-platform">Telegram Ads</span>
+      </div>
+      <div>
+        <div class="case-metric-val"><em>+210%</em></div>
+        <div class="case-metric-label">рост подписчиков канала</div>
+      </div>
+      <div class="case-divider"></div>
+      <div>
+        <div class="case-metric-val"><em>14 ₽</em></div>
+        <div class="case-metric-label">цена подписчика</div>
+      </div>
+      <p class="case-desc">Настроил Telegram Ads для прогрева аудитории перед запуском курса. Канал вырос за 6 недель.</p>
+      <span class="nda-tag"><i class="ti ti-lock"></i> Клиент под NDA</span>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog" class="section" style="background:#f5f3ff;">
+  <div class="section-header">
+    <div class="section-label">Блог</div>
+    <a href="#" class="more-link">Все статьи →</a>
+  </div>
+  <div class="blog-grid">
+    <a href="#" class="post reveal reveal-d1">
+      <div class="post-thumb-wrap">
+        <div class="post-thumb post-thumb-1"><i class="ti ti-target" aria-hidden="true"></i></div>
+      </div>
+      <div class="post-body">
+        <span class="post-tag">Яндекс.Директ</span>
+        <h3>Почему реклама в Директе сливает бюджет — 5 частых ошибок</h3>
+        <div class="post-footer">
+          <span class="post-date">12 мая 2025</span>
+          <i class="ti ti-arrow-right post-arrow" aria-hidden="true"></i>
+        </div>
+      </div>
+    </a>
+    <a href="#" class="post reveal reveal-d2">
+      <div class="post-thumb-wrap">
+        <div class="post-thumb post-thumb-2"><i class="ti ti-adjustments-horizontal" aria-hidden="true"></i></div>
+      </div>
+      <div class="post-body">
+        <span class="post-tag">Стратегия</span>
+        <h3>Директ vs VK: какую площадку выбрать для малого бизнеса</h3>
+        <div class="post-footer">
+          <span class="post-date">28 апр 2025</span>
+          <i class="ti ti-arrow-right post-arrow" aria-hidden="true"></i>
+        </div>
+      </div>
+    </a>
+    <a href="#" class="post reveal reveal-d3">
+      <div class="post-thumb-wrap">
+        <div class="post-thumb post-thumb-3"><i class="ti ti-chart-bar" aria-hidden="true"></i></div>
+      </div>
+      <div class="post-body">
+        <span class="post-tag">Аналитика</span>
+        <h3>Как читать отчёт по рекламе: что важно, а что можно игнорировать</h3>
+        <div class="post-footer">
+          <span class="post-date">15 апр 2025</span>
+          <i class="ti ti-arrow-right post-arrow" aria-hidden="true"></i>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- FORM -->
+<section id="contact" class="form-section">
+  <svg class="form-blob" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="fbg" cx="30%" cy="25%" r="65%">
+        <stop offset="0%" stop-color="#B0A0FF"/>
+        <stop offset="45%" stop-color="#6644EE"/>
+        <stop offset="85%" stop-color="#2A14A0"/>
+        <stop offset="100%" stop-color="#100860"/>
+      </radialGradient>
+      <radialGradient id="fsh" cx="24%" cy="18%" r="30%">
+        <stop offset="0%" stop-color="rgba(255,255,255,0.8)"/>
+        <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+      </radialGradient>
+      <filter id="fsf"><feGaussianBlur stdDeviation="1.5"/></filter>
+    </defs>
+    <path d="M160,10 C178,10 196,26 212,16 C230,4 252,8 262,28
+             C274,50 264,78 284,96 C306,116 322,134 320,158
+             C318,184 298,196 302,222 C308,252 308,280 288,296
+             C266,314 238,304 214,318 C190,332 178,348 156,348
+             C132,348 118,330 96,322 C70,314 40,324 22,304
+             C2,282 12,252 4,226 C-4,196 -10,164 4,138
+             C16,114 42,108 48,82 C54,56 40,16 64,2
+             C84,-8 108,10 130,6 C146,4 140,10 160,10Z"
+          fill="url(#fbg)"/>
+    <path d="M160,10 C178,10 196,26 212,16 C230,4 252,8 262,28
+             C274,50 264,78 284,96 C306,116 322,134 320,158
+             C318,184 298,196 302,222 C308,252 308,280 288,296
+             C266,314 238,304 214,318 C190,332 178,348 156,348
+             C132,348 118,330 96,322 C70,314 40,324 22,304
+             C2,282 12,252 4,226 C-4,196 -10,164 4,138
+             C16,114 42,108 48,82 C54,56 40,16 64,2
+             C84,-8 108,10 130,6 C146,4 140,10 160,10Z"
+          fill="url(#fsh)" filter="url(#fsf)"/>
+    <ellipse cx="114" cy="84" rx="38" ry="24" fill="rgba(255,255,255,0.3)" filter="url(#fsf)"/>
+    <ellipse cx="106" cy="76" rx="14" ry="9" fill="rgba(255,255,255,0.55)" filter="url(#fsf)"/>
+  </svg>
+
+  <div class="form-top reveal">
+    <h2 class="form-title">Расскажите<br>о вашей задаче —<br><em>разберёмся вместе</em></h2>
+    <p class="form-desc">Оставьте заявку и я свяжусь в течение нескольких часов. Обсудим задачу, подберём формат работы и скажу, что можно улучшить уже сейчас.</p>
+  </div>
+
+  <div class="fields reveal">
+    <input class="field" type="text" name="name" placeholder="Имя" autocomplete="given-name">
+    <input class="field" type="text" name="site" placeholder="Сайт или ссылка на бизнес">
+    <input class="field" type="tel"  name="tel"  placeholder="Телефон" autocomplete="tel">
+    <input class="field" type="text" name="tg"   placeholder="Telegram или email">
+  </div>
+
+  <div class="checks-label">Что вас интересует?</div>
+  <div class="checks reveal">
+    <label class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><i class="ti ti-check"></i></div><span>Аудит рекламы</span>
+    </label>
+    <label class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><i class="ti ti-check"></i></div><span>Настройка с нуля</span>
+    </label>
+    <label class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><i class="ti ti-check"></i></div><span>Ведение рекламы</span>
+    </label>
+    <label class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><i class="ti ti-check"></i></div><span>Яндекс.Директ</span>
+    </label>
+    <label class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><i class="ti ti-check"></i></div><span>VK Реклама</span>
+    </label>
+    <label class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><i class="ti ti-check"></i></div><span>Telegram Ads</span>
+    </label>
+    <label class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><i class="ti ti-check"></i></div><span>Google Ads</span>
+    </label>
+    <label class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><i class="ti ti-check"></i></div><span>Консультация</span>
+    </label>
+    <label class="check-item" onclick="toggleCheck(this)">
+      <div class="check-box"><i class="ti ti-check"></i></div><span>Другое</span>
+    </label>
+  </div>
+
+  <div class="form-submit">
+    <button class="submit-btn" onclick="handleSubmit(this)">Отправить заявку →</button>
+    <span class="form-note">Отвечаю в рабочее время в течение нескольких часов</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <a href="#" class="footer-logo">Mak<span>ads</span></a>
+    <a href="https://t.me/СЮДА_ВСТАВИТЬ_ССЫЛКУ" class="footer-tg" target="_blank" rel="noopener">
+      <i class="ti ti-brand-telegram" aria-hidden="true"></i>
+      <span>Telegram-канал</span>
+    </a>
+  </div>
+  <div class="footer-divider"></div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Makads. Интернет-реклама для бизнеса</div>
+    <div class="footer-legal">
+      <a href="privacy-policy.html">Политика обработки персональных данных</a>
+      <a href="consent.html">Согласие на обработку персональных данных</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); }
+  });
+}, { threshold: 0.1 });
+revealEls.forEach(el => revealObserver.observe(el));
+
+// Counter animation
+function animateCounter(el, target, duration) {
+  let start = 0;
+  const step = target / Math.ceil(duration / 16);
+  const timer = setInterval(() => {
+    start += step;
+    if (start >= target) { el.textContent = target; clearInterval(timer); }
+    else { el.textContent = Math.floor(start); }
+  }, 16);
+}
+const counterObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      animateCounter(e.target, parseInt(e.target.dataset.target), 900);
+      counterObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+// Checkboxes
+function toggleCheck(el) { el.classList.toggle('checked'); }
+
+// Form submit
+function handleSubmit(btn) {
+  btn.textContent = 'Отправлено ✓';
+  btn.style.background = '#2E9E6B';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = 'Отправить заявку →';
+    btn.style.background = '';
+    btn.disabled = false;
+  }, 3000);
+}
+
+// Nav active link highlight
+const sections = document.querySelectorAll('section[id], .form-section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 80) current = s.id; });
+  navLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === '#' + current ? '#4A35D4' : '';
+  });
+}, { passive: true });
+</script>
+
+</body>
+</html>
