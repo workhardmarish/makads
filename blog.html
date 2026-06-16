@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Блог — Makads</title>
+<meta name="description" content="Статьи об интернет-рекламе — Яндекс.Директ, VK, Telegram Ads. Практика, разборы, советы для малого и среднего бизнеса.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --c-bg:      #f0ecff;
+  --c-bg2:     #f5f3ff;
+  --c-white:   #ffffff;
+  --c-dark:    #120A50;
+  --c-mid:     #2E2A55;
+  --c-muted:   #5050A0;
+  --c-border:  rgba(100,80,220,0.12);
+  --c-purple:  #4A35D4;
+  --c-purple2: #5B3FD4;
+  --c-purple3: #7B5CF5;
+  --c-purple4: #4A3890;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--c-bg);
+  color: var(--c-dark);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity .5s ease, transform .5s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: .05s; }
+.reveal-d2 { transition-delay: .12s; }
+.reveal-d3 { transition-delay: .19s; }
+
+/* NAV */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 48px;
+  background: rgba(240,236,255,0.88);
+  backdrop-filter: blur(12px);
+  border-bottom: 0.5px solid var(--c-border);
+}
+.nav-logo { font-size: 19px; font-weight: 700; color: #2A1AA0; letter-spacing: -0.5px; text-decoration: none; }
+.nav-logo span { color: var(--c-purple3); }
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a { font-size: 14px; color: #3A3560; text-decoration: none; transition: color .15s; }
+.nav-links a:hover, .nav-links a.active { color: var(--c-purple); }
+.nav-btn {
+  background: var(--c-purple); color: #fff;
+  font-size: 14px; font-weight: 500;
+  border: none; border-radius: var(--radius-sm);
+  padding: 10px 20px; cursor: pointer;
+  text-decoration: none;
+  transition: background .15s, transform .15s;
+}
+.nav-btn:hover { background: #5B46E5; transform: translateY(-1px); }
+
+/* HERO */
+.blog-hero {
+  padding: 130px 48px 64px;
+  background: linear-gradient(130deg, #e4dcff 0%, #d4e6ff 55%, #ddf0ff 100%);
+  border-bottom: 0.5px solid var(--c-border);
+  position: relative; overflow: hidden;
+}
+.blog-hero-blob {
+  position: absolute; right: -80px; top: -60px;
+  width: 360px; height: 360px; opacity: 0.4;
+  pointer-events: none;
+  animation: blobFloat 8s ease-in-out infinite;
+}
+@keyframes blobFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%       { transform: translateY(-16px) rotate(4deg); }
+}
+.blog-hero-inner { position: relative; z-index: 2; max-width: 640px; }
+.blog-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.75);
+  border: 0.5px solid rgba(100,80,220,0.2);
+  border-radius: 20px; padding: 5px 16px; margin-bottom: 20px;
+}
+.blog-eyebrow-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--c-purple3); animation: pulse 2.5s ease-in-out infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.4;transform:scale(0.65);} }
+.blog-eyebrow span { font-size: 12px; color: #4A30B0; }
+.blog-hero h1 {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700; line-height: 1.1;
+  letter-spacing: -1.5px; color: var(--c-dark);
+  margin-bottom: 14px;
+}
+.blog-hero h1 em { font-style: normal; color: var(--c-purple2); }
+.blog-hero p { font-size: 16px; color: var(--c-mid); max-width: 480px; line-height: 1.65; }
+
+/* FILTERS */
+.filters-wrap {
+  padding: 24px 48px;
+  background: var(--c-white);
+  border-bottom: 0.5px solid var(--c-border);
+  display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
+}
+.filter-btn {
+  font-size: 13px; font-weight: 500;
+  border: 0.5px solid var(--c-border);
+  border-radius: 20px; padding: 7px 16px;
+  cursor: pointer; background: transparent; color: var(--c-muted);
+  transition: all .15s; font-family: inherit;
+}
+.filter-btn:hover { border-color: var(--c-purple3); color: var(--c-purple); }
+.filter-btn.active { background: var(--c-purple); color: #fff; border-color: var(--c-purple); }
+
+/* MAIN CONTENT */
+.blog-main { padding: 48px 48px 80px; }
+
+/* EMPTY STATE */
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.empty-icon {
+  width: 64px; height: 64px; border-radius: 18px;
+  background: var(--c-bg2);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 24px;
+}
+.empty-icon i { font-size: 28px; color: var(--c-purple3); }
+.empty-state h2 { font-size: 22px; font-weight: 500; color: var(--c-dark); margin-bottom: 10px; }
+.empty-state p { font-size: 15px; color: var(--c-mid); line-height: 1.65; margin-bottom: 28px; }
+.empty-tg {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: var(--c-purple); color: #fff;
+  font-size: 14px; font-weight: 500;
+  border-radius: var(--radius-md); padding: 12px 24px;
+  text-decoration: none;
+  transition: background .15s, transform .15s;
+}
+.empty-tg:hover { background: #5B46E5; transform: translateY(-1px); }
+.empty-tg i { font-size: 17px; }
+
+/* POSTS GRID (shown when articles appear) */
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.post {
+  background: var(--c-white);
+  border: 0.5px solid var(--c-border);
+  border-radius: var(--radius-lg); overflow: hidden;
+  display: flex; flex-direction: column;
+  text-decoration: none;
+  transition: transform .2s, box-shadow .2s;
+}
+.post:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(74,53,212,0.1); }
+.post:hover .post-thumb { transform: scale(1.04); }
+.post:hover .post-arrow { transform: translateX(3px); }
+.post-thumb-wrap { height: 110px; overflow: hidden; flex-shrink: 0; }
+.post-thumb { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; transition: transform .35s ease; }
+.post-thumb i { font-size: 30px; color: rgba(255,255,255,0.65); }
+.post-thumb-1 { background: linear-gradient(135deg, #c8b8ff, #7B5CF5); }
+.post-thumb-2 { background: linear-gradient(135deg, #b8d8ff, #4A7EE8); }
+.post-thumb-3 { background: linear-gradient(135deg, #d0b8ff, #9044D4); }
+.post-body { padding: 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.post-tag {
+  font-size: 10px; font-weight: 500; letter-spacing: 1px;
+  text-transform: uppercase; color: var(--c-purple2);
+  background: var(--c-bg2); border-radius: 5px;
+  padding: 3px 9px; display: inline-block; align-self: flex-start;
+}
+.post h3 { font-size: 15px; font-weight: 500; color: var(--c-dark); line-height: 1.45; }
+.post p { font-size: 13px; color: var(--c-mid); line-height: 1.6; flex: 1; }
+.post-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: auto; padding-top: 12px;
+  border-top: 0.5px solid rgba(100,80,220,0.08);
+}
+.post-date { font-size: 12px; color: #8080B0; }
+.post-arrow { font-size: 15px; color: var(--c-purple3); transition: transform .2s; }
+
+/* COMING SOON CARDS (placeholder grid) */
+.placeholder-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 32px;
+  opacity: 0.35;
+}
+.placeholder-card {
+  background: var(--c-white);
+  border: 0.5px dashed rgba(100,80,220,0.25);
+  border-radius: var(--radius-lg);
+  height: 200px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 10px;
+}
+.placeholder-card i { font-size: 24px; color: var(--c-purple3); }
+.placeholder-card span { font-size: 12px; color: var(--c-muted); }
+
+/* SUBSCRIBE */
+.subscribe-section {
+  padding: 64px 48px;
+  background: linear-gradient(130deg, #e4dcff 0%, #d4e6ff 55%, #ddf0ff 100%);
+  border-top: 0.5px solid var(--c-border);
+  text-align: center;
+}
+.subscribe-section h2 {
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 700; letter-spacing: -1px;
+  color: var(--c-dark); margin-bottom: 12px;
+}
+.subscribe-section h2 em { font-style: normal; color: var(--c-purple2); }
+.subscribe-section p { font-size: 15px; color: var(--c-mid); margin-bottom: 28px; line-height: 1.65; }
+.subscribe-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--c-purple); color: #fff;
+  font-size: 15px; font-weight: 500;
+  border-radius: var(--radius-md); padding: 14px 28px;
+  text-decoration: none;
+  transition: background .15s, transform .15s, box-shadow .15s;
+}
+.subscribe-btn:hover { background: #5B46E5; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(74,53,212,0.25); }
+.subscribe-btn i { font-size: 18px; }
+
+/* FOOTER */
+.footer { background: #120A50; padding: 32px 48px 24px; }
+.footer-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+.footer-logo { font-size: 18px; font-weight: 700; color: #fff; letter-spacing: -0.5px; text-decoration: none; }
+.footer-logo span { color: #9B80FF; }
+.footer-tg {
+  display: flex; align-items: center; gap: 9px; text-decoration: none;
+  background: rgba(255,255,255,0.08); border: 0.5px solid rgba(255,255,255,0.15);
+  border-radius: var(--radius-sm); padding: 9px 18px;
+  transition: background .15s;
+}
+.footer-tg:hover { background: rgba(255,255,255,0.15); }
+.footer-tg i { font-size: 17px; color: #9B80FF; }
+.footer-tg span { font-size: 14px; color: #C0B0FF; font-weight: 500; }
+.footer-divider { width: 100%; height: 0.5px; background: rgba(255,255,255,0.08); margin-bottom: 18px; }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.footer-copy { font-size: 13px; color: rgba(255,255,255,0.3); }
+.footer-legal { display: flex; gap: 24px; flex-wrap: wrap; }
+.footer-legal a { font-size: 13px; color: rgba(255,255,255,0.4); text-decoration: none; transition: color .15s; }
+.footer-legal a:hover { color: rgba(255,255,255,0.75); }
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .nav { padding: 14px 20px; }
+  .nav-links { display: none; }
+  .blog-hero { padding: 110px 20px 48px; }
+  .filters-wrap { padding: 16px 20px; }
+  .blog-main { padding: 32px 20px 60px; }
+  .posts-grid, .placeholder-grid { grid-template-columns: 1fr; }
+  .subscribe-section { padding: 48px 20px; }
+  .footer { padding: 28px 20px 20px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="index.html" class="nav-logo">Mak<span>ads</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#services">Услуги</a></li>
+    <li><a href="index.html#how">Как работаю</a></li>
+    <li><a href="index.html#cases">Кейсы</a></li>
+    <li><a href="blog.html" class="active">Блог</a></li>
+  </ul>
+  <a href="index.html#contact" class="nav-btn">Оставить заявку</a>
+</nav>
+
+<!-- HERO -->
+<section class="blog-hero">
+  <svg class="blog-hero-blob" viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="bbg" cx="32%" cy="28%" r="68%">
+        <stop offset="0%" stop-color="#C8B8FF"/>
+        <stop offset="40%" stop-color="#7A50F0"/>
+        <stop offset="75%" stop-color="#3820CC"/>
+        <stop offset="100%" stop-color="#160870"/>
+      </radialGradient>
+      <radialGradient id="bsh" cx="26%" cy="20%" r="32%">
+        <stop offset="0%" stop-color="rgba(255,255,255,0.85)"/>
+        <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+      </radialGradient>
+      <filter id="bsf"><feGaussianBlur stdDeviation="2"/></filter>
+    </defs>
+    <path d="M180,18 C198,18 218,34 234,22 C252,8 276,14 288,36
+             C302,60 290,90 310,108 C334,130 352,150 350,178
+             C348,206 326,218 330,248 C336,280 334,308 312,326
+             C288,346 260,334 236,350 C210,366 196,384 170,384
+             C142,384 126,364 100,356 C72,346 40,360 20,338
+             C-2,314 10,280 2,252 C-8,218 -14,184 2,156
+             C16,130 46,122 52,94 C58,66 42,26 68,8
+             C90,-6 118,14 144,8 C162,4 160,18 180,18Z"
+          fill="url(#bbg)"/>
+    <path d="M180,18 C198,18 218,34 234,22 C252,8 276,14 288,36
+             C302,60 290,90 310,108 C334,130 352,150 350,178
+             C348,206 326,218 330,248 C336,280 334,308 312,326
+             C288,346 260,334 236,350 C210,366 196,384 170,384
+             C142,384 126,364 100,356 C72,346 40,360 20,338
+             C-2,314 10,280 2,252 C-8,218 -14,184 2,156
+             C16,130 46,122 52,94 C58,66 42,26 68,8
+             C90,-6 118,14 144,8 C162,4 160,18 180,18Z"
+          fill="url(#bsh)" filter="url(#bsf)"/>
+    <ellipse cx="128" cy="96" rx="48" ry="30" fill="rgba(255,255,255,0.28)" filter="url(#bsf)"/>
+    <ellipse cx="118" cy="86" rx="18" ry="12" fill="rgba(255,255,255,0.55)" filter="url(#bsf)"/>
+  </svg>
+
+  <div class="blog-hero-inner">
+    <div class="blog-eyebrow">
+      <div class="blog-eyebrow-dot"></div>
+      <span>Практика без воды</span>
+    </div>
+    <h1>Блог о рекламе —<br><em>для тех, кто тратит</em><br><em>и хочет понимать</em></h1>
+    <p>Разборы, кейсы и советы по Яндекс.Директ, VK и Telegram Ads. Пишу о том, с чем работаю каждый день.</p>
+  </div>
+</section>
+
+<!-- FILTERS -->
+<div class="filters-wrap">
+  <button class="filter-btn active" onclick="setFilter(this, 'all')">Все</button>
+  <button class="filter-btn" onclick="setFilter(this, 'direct')">Яндекс.Директ</button>
+  <button class="filter-btn" onclick="setFilter(this, 'vk')">VK Реклама</button>
+  <button class="filter-btn" onclick="setFilter(this, 'tg')">Telegram Ads</button>
+  <button class="filter-btn" onclick="setFilter(this, 'strategy')">Стратегия</button>
+  <button class="filter-btn" onclick="setFilter(this, 'analytics')">Аналитика</button>
+</div>
+
+<!-- MAIN -->
+<main class="blog-main">
+
+  <!-- EMPTY STATE — убери этот блок когда появятся статьи -->
+  <div class="empty-state reveal">
+    <div class="empty-icon" aria-hidden="true"><i class="ti ti-writing"></i></div>
+    <h2>Статьи скоро появятся</h2>
+    <p>Здесь будут разборы, кейсы и практические советы по интернет-рекламе. Подпишись на Telegram-канал — там появляются первыми.</p>
+    <a href="https://t.me/+mLtKrqMsWK05MjQy" class="empty-tg" target="_blank" rel="noopener">
+      <i class="ti ti-brand-telegram"></i>
+      Подписаться на канал
+    </a>
+  </div>
+
+  <!-- PLACEHOLDER CARDS (визуальные заглушки) -->
+  <div class="placeholder-grid" aria-hidden="true">
+    <div class="placeholder-card"><i class="ti ti-file-text"></i><span>Скоро</span></div>
+    <div class="placeholder-card"><i class="ti ti-file-text"></i><span>Скоро</span></div>
+    <div class="placeholder-card"><i class="ti ti-file-text"></i><span>Скоро</span></div>
+  </div>
+
+  <!--
+    КАК ДОБАВИТЬ СТАТЬЮ:
+    Скопируй блок ниже, заполни данные и вставь перед empty-state.
+    Когда добавишь первую статью — удали блоки empty-state и placeholder-grid.
+
+  <div class="posts-grid">
+    <a href="posts/название-статьи.html" class="post reveal reveal-d1">
+      <div class="post-thumb-wrap">
+        <div class="post-thumb post-thumb-1"><i class="ti ti-target" aria-hidden="true"></i></div>
+      </div>
+      <div class="post-body">
+        <span class="post-tag">Яндекс.Директ</span>
+        <h3>Заголовок статьи</h3>
+        <p>Краткое описание о чём статья — 1-2 предложения.</p>
+        <div class="post-footer">
+          <span class="post-date">1 июня 2025</span>
+          <i class="ti ti-arrow-right post-arrow" aria-hidden="true"></i>
+        </div>
+      </div>
+    </a>
+  </div>
+  -->
+
+</main>
+
+<!-- SUBSCRIBE -->
+<section class="subscribe-section">
+  <h2>Новые статьи —<br><em>сразу в Telegram</em></h2>
+  <p>Подпишись на канал, чтобы не пропустить разборы и кейсы</p>
+  <a href="https://t.me/+mLtKrqMsWK05MjQy" class="subscribe-btn" target="_blank" rel="noopener">
+    <i class="ti ti-brand-telegram"></i>
+    Подписаться на канал
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <a href="index.html" class="footer-logo">Mak<span>ads</span></a>
+    <a href="https://t.me/+mLtKrqMsWK05MjQy" class="footer-tg" target="_blank" rel="noopener">
+      <i class="ti ti-brand-telegram" aria-hidden="true"></i>
+      <span>Telegram-канал</span>
+    </a>
+  </div>
+  <div class="footer-divider"></div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Makads. Интернет-реклама для бизнеса</div>
+    <div class="footer-legal">
+      <a href="privacy-policy.html">Политика обработки персональных данных</a>
+      <a href="consent.html">Согласие на обработку персональных данных</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Reveal
+const revealEls = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.1 });
+revealEls.forEach(el => obs.observe(el));
+
+// Filter buttons
+function setFilter(btn, category) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  // Когда появятся статьи — фильтрация по data-category
+}
+</script>
+</body>
+</html>
