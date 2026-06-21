@@ -593,7 +593,7 @@ body {
     <div class="why-card reveal reveal-d1">
       <div class="why-icon" aria-hidden="true"><i class="ti ti-file-description"></i></div>
       <div>
-        <h3>Отчётность</h3>
+        <h3>Отчёты без воды</h3>
         <p>Каждый месяц понятный отчёт с цифрами — сколько потратили, сколько пришло заявок, какая цена лида</p>
       </div>
     </div>
@@ -685,46 +685,8 @@ body {
     <div class="section-label">Блог</div>
     <a href="blog.html" class="more-link">Все статьи →</a>
   </div>
-  <div class="blog-grid">
-    <a href="#" class="post reveal reveal-d1">
-      <div class="post-thumb-wrap">
-        <div class="post-thumb post-thumb-1"><i class="ti ti-target" aria-hidden="true"></i></div>
-      </div>
-      <div class="post-body">
-        <span class="post-tag">Яндекс.Директ</span>
-        <h3>Почему реклама в Директе сливает бюджет — 5 частых ошибок</h3>
-        <div class="post-footer">
-          <span class="post-date">12 мая 2025</span>
-          <i class="ti ti-arrow-right post-arrow" aria-hidden="true"></i>
-        </div>
-      </div>
-    </a>
-    <a href="#" class="post reveal reveal-d2">
-      <div class="post-thumb-wrap">
-        <div class="post-thumb post-thumb-2"><i class="ti ti-adjustments-horizontal" aria-hidden="true"></i></div>
-      </div>
-      <div class="post-body">
-        <span class="post-tag">Стратегия</span>
-        <h3>Директ vs VK: какую площадку выбрать для малого бизнеса</h3>
-        <div class="post-footer">
-          <span class="post-date">28 апр 2025</span>
-          <i class="ti ti-arrow-right post-arrow" aria-hidden="true"></i>
-        </div>
-      </div>
-    </a>
-    <a href="#" class="post reveal reveal-d3">
-      <div class="post-thumb-wrap">
-        <div class="post-thumb post-thumb-3"><i class="ti ti-chart-bar" aria-hidden="true"></i></div>
-      </div>
-      <div class="post-body">
-        <span class="post-tag">Аналитика</span>
-        <h3>Как читать отчёт по рекламе: что важно, а что можно игнорировать</h3>
-        <div class="post-footer">
-          <span class="post-date">15 апр 2025</span>
-          <i class="ti ti-arrow-right post-arrow" aria-hidden="true"></i>
-        </div>
-      </div>
-    </a>
+  <div class="blog-grid" id="indexBlogGrid">
+    <!-- карточки подтягиваются из posts.json -->
   </div>
 </section>
 
@@ -878,6 +840,40 @@ function handleSubmit(btn) {
     btn.disabled = false;
   }, 3000);
 }
+
+// Blog posts on index — load from posts.json
+const INDEX_THUMBS = ['post-thumb-1','post-thumb-2','post-thumb-3'];
+const INDEX_ICONS  = ['ti-target','ti-adjustments-horizontal','ti-chart-bar','ti-sparkles','ti-bulb','ti-writing'];
+
+fetch('posts.json')
+  .then(r => r.json())
+  .then(posts => {
+    const grid = document.getElementById('indexBlogGrid');
+    if (!grid) return;
+    const latest = posts.sort((a,b) => new Date(b.date) - new Date(a.date)).slice(0,3);
+    grid.innerHTML = latest.map((p, i) => `
+      <a href="${p.file}" class="post reveal reveal-d${i+1}">
+        <div class="post-thumb-wrap">
+          <div class="post-thumb ${INDEX_THUMBS[i % 3]}">
+            <i class="ti ${INDEX_ICONS[i % INDEX_ICONS.length]}" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div class="post-body">
+          <span class="post-tag">${p.tag}</span>
+          <h3>${p.title}</h3>
+          <div class="post-footer">
+            <span class="post-date">${p.dateLabel}</span>
+            <i class="ti ti-arrow-right post-arrow" aria-hidden="true"></i>
+          </div>
+        </div>
+      </a>
+    `).join('');
+    document.querySelectorAll('#indexBlogGrid .post.reveal').forEach(el => revealObserver.observe(el));
+  })
+  .catch(() => {
+    const grid = document.getElementById('indexBlogGrid');
+    if (grid) grid.style.display = 'none';
+  });
 
 // Nav active link highlight
 const sections = document.querySelectorAll('section[id], .form-section[id]');
