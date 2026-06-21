@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Согласие на получение рекламных сообщений — Makads</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #F7F5FF;
+      --surface: #FFFFFF;
+      --purple: #7A50F0;
+      --purple-light: #9B80FF;
+      --purple-pale: #EDE8FF;
+      --text: #1A1535;
+      --text-mid: #4A4270;
+      --text-muted: #8A82AA;
+      --border: rgba(122, 80, 240, 0.12);
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 48px;
+      background: rgba(247, 245, 255, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 0.5px solid var(--border);
+    }
+    .nav-logo {
+      font-size: 20px; font-weight: 700; letter-spacing: -0.5px;
+      color: var(--text); text-decoration: none;
+    }
+    .nav-logo span { color: var(--purple); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      font-size: 14px; font-weight: 500; color: var(--text-mid);
+      text-decoration: none; transition: color .15s;
+    }
+    .nav-links a:hover { color: var(--purple); }
+    .nav-btn {
+      font-size: 14px; font-weight: 600;
+      color: #fff; background: var(--purple);
+      padding: 10px 22px; border-radius: var(--radius-sm);
+      text-decoration: none; transition: opacity .15s;
+    }
+    .nav-btn:hover { opacity: 0.88; }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      padding: 130px 48px 56px;
+      background: linear-gradient(160deg, #EDE8FF 0%, #F7F5FF 55%);
+      border-bottom: 1px solid var(--border);
+    }
+    .page-hero-inner { max-width: 800px; margin: 0 auto; }
+    .breadcrumb {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; color: var(--text-muted); margin-bottom: 20px;
+    }
+    .breadcrumb a { color: var(--purple); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb i { font-size: 10px; color: var(--text-muted); }
+    .page-hero h1 {
+      font-size: 38px; font-weight: 700; line-height: 1.2;
+      letter-spacing: -1px; color: var(--text); margin-bottom: 16px;
+    }
+    .page-hero-meta {
+      display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+    }
+    .meta-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; color: var(--text-muted);
+    }
+    .meta-tag i { font-size: 12px; color: var(--purple-light); }
+
+    /* ── CONTENT ── */
+    .content-wrap {
+      max-width: 800px; margin: 0 auto;
+      padding: 56px 48px 80px;
+    }
+
+    .doc-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px 44px;
+      margin-bottom: 24px;
+    }
+
+    .doc-block h2 {
+      font-size: 16px; font-weight: 700;
+      color: var(--purple);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 20px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .doc-block h2 i { font-size: 14px; opacity: 0.8; }
+
+    .doc-block p {
+      font-size: 15px; color: var(--text-mid);
+      line-height: 1.75; margin-bottom: 14px;
+    }
+    .doc-block p:last-child { margin-bottom: 0; }
+
+    .doc-block ul {
+      list-style: none; margin: 14px 0;
+    }
+    .doc-block ul li {
+      font-size: 15px; color: var(--text-mid);
+      line-height: 1.7;
+      padding: 8px 0 8px 28px;
+      position: relative;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .doc-block ul li:last-child { border-bottom: none; }
+    .doc-block ul li::before {
+      content: '';
+      position: absolute; left: 0; top: 50%;
+      transform: translateY(-50%);
+      width: 8px; height: 8px;
+      background: var(--purple-light);
+      border-radius: 50%;
+      opacity: 0.6;
+    }
+
+    .doc-block a {
+      color: var(--purple); text-decoration: none;
+      font-weight: 500; border-bottom: 1px solid rgba(122, 80, 240, 0.25);
+      transition: border-color .15s;
+    }
+    .doc-block a:hover { border-color: var(--purple); }
+
+    .highlight-box {
+      background: var(--purple-pale);
+      border-left: 3px solid var(--purple);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 18px 22px;
+      margin: 20px 0;
+    }
+    .highlight-box p {
+      font-size: 14px; color: var(--text-mid); margin: 0;
+    }
+    .highlight-box strong { color: var(--text); }
+
+    .revoke-form-note {
+      background: #F0FBF5;
+      border: 1px solid rgba(34, 197, 94, 0.2);
+      border-radius: var(--radius-sm);
+      padding: 16px 20px;
+      margin-top: 20px;
+      display: flex; align-items: flex-start; gap: 12px;
+    }
+    .revoke-form-note i { color: #22C55E; font-size: 16px; margin-top: 2px; flex-shrink: 0; }
+    .revoke-form-note p { font-size: 14px; color: var(--text-mid); margin: 0; }
+    .revoke-form-note a { color: #16a34a; border-color: rgba(22, 163, 74, 0.3); }
+
+    .doc-date {
+      text-align: center;
+      font-size: 13px; color: var(--text-muted);
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 0.5px solid var(--border);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #1A1535;
+      padding: 32px 48px 24px;
+    }
+    .footer-top {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 24px;
+    }
+    .footer-logo {
+      font-size: 18px; font-weight: 700; color: #fff;
+      letter-spacing: -0.5px; text-decoration: none;
+    }
+    .footer-logo span { color: #9B80FF; }
+    .footer-tg {
+      display: flex; align-items: center; gap: 9px; text-decoration: none;
+      background: rgba(255,255,255,0.08);
+      border: 0.5px solid rgba(255,255,255,0.15);
+      border-radius: var(--radius-sm); padding: 9px 18px;
+      transition: background .15s;
+    }
+    .footer-tg:hover { background: rgba(255,255,255,0.15); }
+    .footer-tg i { font-size: 17px; color: #9B80FF; }
+    .footer-tg span { font-size: 14px; color: #C0B0FF; font-weight: 500; }
+    .footer-divider {
+      width: 100%; height: 0.5px;
+      background: rgba(255,255,255,0.08);
+      margin-bottom: 18px;
+    }
+    .footer-bottom {
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 12px;
+    }
+    .footer-copy { font-size: 13px; color: rgba(255,255,255,0.3); }
+    .footer-legal { display: flex; gap: 24px; flex-wrap: wrap; }
+    .footer-legal a {
+      font-size: 13px; color: rgba(255,255,255,0.4);
+      text-decoration: none; transition: color .15s;
+    }
+    .footer-legal a:hover { color: rgba(255,255,255,0.75); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+      .nav { padding: 14px 20px; }
+      .nav-links { display: none; }
+      .page-hero { padding: 110px 20px 40px; }
+      .page-hero h1 { font-size: 28px; }
+      .content-wrap { padding: 32px 20px 60px; }
+      .doc-block { padding: 28px 24px; }
+      footer { padding: 28px 20px 20px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="/makads/" class="nav-logo">Mak<span>ads</span></a>
+  <ul class="nav-links">
+    <li><a href="/makads/#services">Услуги</a></li>
+    <li><a href="/makads/#how">Как работаю</a></li>
+    <li><a href="/makads/#cases">Кейсы</a></li>
+    <li><a href="/makads/blog.html">Блог</a></li>
+  </ul>
+  <a href="/makads/#contact" class="nav-btn">Оставить заявку</a>
+</nav>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb">
+      <a href="/makads/">Главная</a>
+      <i class="fa-solid fa-chevron-right"></i>
+      <span>Согласие на рекламные сообщения</span>
+    </div>
+    <h1>Согласие на получение<br>рекламных сообщений</h1>
+    <div class="page-hero-meta">
+      <span class="meta-tag"><i class="fa-regular fa-calendar"></i> Редакция от 21 июня 2026 г.</span>
+      <span class="meta-tag"><i class="fa-regular fa-user"></i> ИП Петрова Марина Андреевна</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<div class="content-wrap">
+
+  <!-- Кто и кому -->
+  <div class="doc-block">
+    <h2><i class="fa-regular fa-file-lines"></i> Общее</h2>
+    <p>Настоящим я, действуя свободно и в своих интересах, даю согласие индивидуальному предпринимателю <strong>Петровой Марине Андреевне</strong> (далее — ИП Петрова М.А.) на получение рекламных и информационных сообщений на предоставленные мной адрес электронной почты и/или номер телефона.</p>
+  </div>
+
+  <!-- Каналы -->
+  <div class="doc-block">
+    <h2><i class="fa-regular fa-paper-plane"></i> Каналы рассылки</h2>
+    <p>Согласие распространяется на следующие способы связи:</p>
+    <ul>
+      <li>e-mail рассылка (направление писем на адрес электронной почты)</li>
+      <li>SMS-рассылка (направление сообщений на номер телефона)</li>
+      <li>сообщения в мессенджерах (Telegram, WhatsApp)</li>
+      <li>push-уведомления на мобильных устройствах или персональных компьютерах</li>
+    </ul>
+  </div>
+
+  <!-- Что считается рекламой -->
+  <div class="doc-block">
+    <h2><i class="fa-regular fa-bullhorn"></i> Что входит в рассылку</h2>
+    <p>К рекламным сообщениям в рамках настоящего согласия относится любая информация, направленная на продвижение услуг ИП Петровой М.А. в области интернет-маркетинга и настройки рекламы:</p>
+    <ul>
+      <li>услуги по настройке и ведению рекламы </li>
+      <li>специальные предложения и акции</li>
+      <li>полезные материалы: гайды, чек-листы, разборы кейсов</li>
+      <li>новости и обновления, связанные с профессиональной деятельностью ИП Петровой М.А.</li>
+    </ul>
+  </div>
+
+  <!-- Отзыв -->
+  <div class="doc-block">
+    <h2><i class="fa-regular fa-circle-xmark"></i> Как отказаться</h2>
+    <p>Вы можете отозвать согласие в любое время одним из следующих способов:</p>
+    <ul>
+      <li>направив письмо на электронную почту <a href="mailto:ma.petrova.work@gmail.com">ma.petrova.work@gmail.com</a> с указанием желаемого канала отказа</li>
+      <li>перейдя по ссылке «Отписаться» в полученном письме</li>
+    </ul>
+
+    <div class="highlight-box">
+      <p>Заявление об отзыве составляется в свободной форме. Укажите: <strong>ФИО, адрес электронной почты и/или номер телефона</strong>, а также каналы, от которых отзывается согласие (все или отдельные).</p>
+    </div>
+
+    <div class="revoke-form-note">
+      <i class="fa-solid fa-circle-check"></i>
+      <p>Датой отзыва считается <strong>день, следующий за днём получения</strong> ИП Петровой М.А. вашего заявления.</p>
+    </div>
+  </div>
+
+  <!-- Срок и подтверждение -->
+  <div class="doc-block">
+    <h2><i class="fa-regular fa-clock"></i> Срок действия и подтверждение</h2>
+    <p>Согласие предоставляется на <strong>неограниченный срок</strong> и сохраняет силу до получения ИП Петровой М.А. заявления о его полном или частичном отзыве.</p>
+    <p>Отправляя заполненную форму на сайте <a href="https://workhardmarish.github.io/makads/" target="_blank">workhardmarish.github.io/makads</a> с отмеченным чек-боксом согласия, вы подтверждаете, что ознакомились с настоящим текстом и выражаете своё добровольное волеизъявление. Никаких дополнительных доказательств для подтверждения факта дачи согласия не требуется.</p>
+  </div>
+
+  <p class="doc-date">Текст согласия размещён по адресу: workhardmarish.github.io/makads/privacy/adv</p>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <a href="/makads/" class="footer-logo">Mak<span>ads</span></a>
+    <a href="https://t.me/+mLtKrqMsWK05MjQy" class="footer-tg" target="_blank">
+      <i class="fa-brands fa-telegram"></i>
+      <span>Telegram-канал</span>
+    </a>
+  </div>
+  <div class="footer-divider"></div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 ИП Петрова М.А. · Makads · Интернет-реклама для бизнеса</span>
+    <div class="footer-legal">
+      <a href="/makads/privacy/">Политика обработки персональных данных</a>
+      <a href="/makads/privacy/adv">Согласие на рекламные сообщения</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
