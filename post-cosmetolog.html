@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Как продвигать косметолога и салон косметологии в интернете в 2026 году — Makads</title>
+<meta name="description" content="Разбираем, какие каналы работают для продвижения косметолога в 2026 году: Яндекс.Директ, SEO, карты, соцсети и AI-поиск. Практика без воды.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --c-bg:      #f0ecff;
+  --c-bg2:     #f5f3ff;
+  --c-white:   #ffffff;
+  --c-dark:    #120A50;
+  --c-mid:     #2E2A55;
+  --c-muted:   #5050A0;
+  --c-border:  rgba(100,80,220,0.12);
+  --c-purple:  #4A35D4;
+  --c-purple2: #5B3FD4;
+  --c-purple3: #7B5CF5;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--c-white);
+  color: var(--c-dark);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* NAV */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 48px;
+  background: rgba(240,236,255,0.88);
+  backdrop-filter: blur(12px);
+  border-bottom: 0.5px solid var(--c-border);
+}
+.nav-logo { font-size: 19px; font-weight: 700; color: #2A1AA0; letter-spacing: -0.5px; text-decoration: none; }
+.nav-logo span { color: var(--c-purple3); }
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a { font-size: 14px; color: #3A3560; text-decoration: none; transition: color .15s; }
+.nav-links a:hover { color: var(--c-purple); }
+.nav-links a.active { color: var(--c-purple); }
+.nav-btn {
+  background: var(--c-purple); color: #fff;
+  font-size: 14px; font-weight: 500;
+  border: none; border-radius: var(--radius-sm);
+  padding: 10px 20px; cursor: pointer;
+  text-decoration: none;
+  transition: background .15s, transform .15s;
+}
+.nav-btn:hover { background: #5B46E5; transform: translateY(-1px); }
+
+/* HERO */
+.post-hero {
+  padding: 120px 48px 56px;
+  background: linear-gradient(130deg, #ede9ff 0%, #dceeff 50%, #e6f3ff 100%);
+  border-bottom: 0.5px solid var(--c-border);
+}
+.post-hero-inner { max-width: 760px; margin: 0 auto; }
+.post-breadcrumb {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; color: var(--c-muted); margin-bottom: 20px;
+}
+.post-breadcrumb a { color: var(--c-purple); text-decoration: none; }
+.post-breadcrumb i { font-size: 14px; }
+.post-tag {
+  display: inline-block;
+  font-size: 11px; font-weight: 500; letter-spacing: 1px;
+  text-transform: uppercase; color: var(--c-purple2);
+  background: rgba(91,63,212,0.1); border-radius: 6px;
+  padding: 4px 12px; margin-bottom: 18px;
+}
+.post-hero h1 {
+  font-size: clamp(26px, 4vw, 44px);
+  font-weight: 700; line-height: 1.12;
+  letter-spacing: -1.5px; color: var(--c-dark);
+  margin-bottom: 20px;
+}
+.post-meta {
+  display: flex; align-items: center; gap: 20px;
+  font-size: 13px; color: var(--c-muted);
+}
+.post-meta i { font-size: 15px; color: var(--c-purple3); }
+.post-meta span { display: flex; align-items: center; gap: 6px; }
+
+/* LAYOUT */
+.post-layout {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 48px;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 56px 48px 80px;
+  align-items: start;
+}
+
+/* ARTICLE */
+.post-content { min-width: 0; }
+
+.post-content h2 {
+  font-size: 24px; font-weight: 700;
+  letter-spacing: -0.5px; color: var(--c-dark);
+  margin: 44px 0 14px;
+  padding-top: 8px;
+}
+.post-content h3 {
+  font-size: 18px; font-weight: 600;
+  color: var(--c-dark); margin: 28px 0 10px;
+}
+.post-content p { color: var(--c-mid); margin-bottom: 18px; }
+.post-content ul, .post-content ol {
+  padding-left: 20px; margin-bottom: 18px;
+}
+.post-content li { color: var(--c-mid); margin-bottom: 8px; }
+.post-content strong { color: var(--c-dark); font-weight: 600; }
+
+/* Lead paragraph */
+.post-lead {
+  font-size: 18px; color: var(--c-mid);
+  line-height: 1.7; margin-bottom: 36px;
+  padding: 24px 28px;
+  background: var(--c-bg2);
+  border-left: 3px solid var(--c-purple3);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+/* Table */
+.post-content table {
+  width: 100%; border-collapse: collapse;
+  margin: 24px 0 28px; font-size: 14px;
+}
+.post-content th {
+  background: var(--c-bg2); color: var(--c-dark);
+  font-weight: 600; font-size: 12px;
+  text-transform: uppercase; letter-spacing: 0.5px;
+  padding: 12px 16px; text-align: left;
+  border-bottom: 1px solid var(--c-border);
+}
+.post-content td {
+  padding: 12px 16px; color: var(--c-mid);
+  border-bottom: 0.5px solid var(--c-border);
+}
+.post-content tr:last-child td { border-bottom: none; }
+.post-content tr:hover td { background: rgba(240,236,255,0.4); }
+
+/* Checklist */
+.checklist { list-style: none; padding: 0; }
+.checklist li {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 8px 0; border-bottom: 0.5px solid var(--c-border);
+  color: var(--c-mid);
+}
+.checklist li:last-child { border-bottom: none; }
+.checklist li::before {
+  content: '✓';
+  color: var(--c-purple3); font-weight: 700;
+  flex-shrink: 0; margin-top: 2px;
+}
+
+/* FAQ */
+.faq-item {
+  border: 0.5px solid var(--c-border);
+  border-radius: var(--radius-md);
+  margin-bottom: 10px; overflow: hidden;
+}
+.faq-q {
+  padding: 16px 20px; font-weight: 500;
+  font-size: 15px; color: var(--c-dark);
+  cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center;
+  user-select: none;
+}
+.faq-q i { font-size: 16px; color: var(--c-purple3); transition: transform .2s; flex-shrink: 0; }
+.faq-item.open .faq-q i { transform: rotate(180deg); }
+.faq-a {
+  padding: 0 20px; max-height: 0; overflow: hidden;
+  transition: max-height .3s ease, padding .3s ease;
+  font-size: 14px; color: var(--c-mid); line-height: 1.65;
+}
+.faq-item.open .faq-a { max-height: 200px; padding: 0 20px 16px; }
+
+/* Disclaimer */
+.disclaimer {
+  font-size: 12px; color: #9090B0;
+  border-top: 0.5px solid var(--c-border);
+  padding-top: 20px; margin-top: 40px;
+  line-height: 1.6;
+}
+
+/* SIDEBAR */
+.post-sidebar { position: sticky; top: 88px; }
+
+.sidebar-toc {
+  background: var(--c-bg2);
+  border: 0.5px solid var(--c-border);
+  border-radius: var(--radius-lg);
+  padding: 24px 20px;
+  margin-bottom: 20px;
+}
+.sidebar-toc-title {
+  font-size: 11px; font-weight: 600; letter-spacing: 1.5px;
+  text-transform: uppercase; color: #4A3890; margin-bottom: 16px;
+}
+.toc-list { list-style: none; }
+.toc-list li { margin-bottom: 10px; }
+.toc-list a {
+  font-size: 13px; color: var(--c-muted); text-decoration: none;
+  line-height: 1.4; transition: color .15s;
+  display: block;
+}
+.toc-list a:hover { color: var(--c-purple); }
+.toc-list a.active { color: var(--c-purple); font-weight: 500; }
+
+.sidebar-cta {
+  background: linear-gradient(140deg, #6644EE, #4A8AF4);
+  border-radius: var(--radius-lg);
+  padding: 24px 20px; text-align: center;
+}
+.sidebar-cta h3 { font-size: 16px; font-weight: 600; color: #fff; margin-bottom: 8px; }
+.sidebar-cta p { font-size: 13px; color: rgba(255,255,255,0.82); margin-bottom: 18px; line-height: 1.55; }
+.sidebar-cta a {
+  display: block; background: #fff; color: var(--c-purple);
+  font-size: 14px; font-weight: 600;
+  border-radius: var(--radius-md); padding: 11px 20px;
+  text-decoration: none; transition: transform .15s, box-shadow .15s;
+}
+.sidebar-cta a:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+
+/* CTA block inside article */
+.article-cta {
+  background: var(--c-bg2);
+  border: 0.5px solid var(--c-border);
+  border-radius: var(--radius-lg);
+  padding: 28px; margin: 40px 0;
+  display: flex; gap: 20px; align-items: center;
+}
+.article-cta-icon {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: rgba(123,92,245,0.12);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.article-cta-icon i { font-size: 22px; color: var(--c-purple3); }
+.article-cta h3 { font-size: 16px; font-weight: 600; color: var(--c-dark); margin-bottom: 4px; }
+.article-cta p { font-size: 13px; color: var(--c-mid); margin: 0; }
+.article-cta a {
+  margin-left: auto; flex-shrink: 0;
+  background: var(--c-purple); color: #fff;
+  font-size: 13px; font-weight: 500;
+  border-radius: var(--radius-md); padding: 10px 20px;
+  text-decoration: none; white-space: nowrap;
+  transition: background .15s;
+}
+.article-cta a:hover { background: #5B46E5; }
+
+/* FOOTER */
+.footer { background: #120A50; padding: 32px 48px 24px; }
+.footer-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+.footer-logo { font-size: 18px; font-weight: 700; color: #fff; letter-spacing: -0.5px; text-decoration: none; }
+.footer-logo span { color: #9B80FF; }
+.footer-tg {
+  display: flex; align-items: center; gap: 9px; text-decoration: none;
+  background: rgba(255,255,255,0.08); border: 0.5px solid rgba(255,255,255,0.15);
+  border-radius: var(--radius-sm); padding: 9px 18px; transition: background .15s;
+}
+.footer-tg:hover { background: rgba(255,255,255,0.15); }
+.footer-tg i { font-size: 17px; color: #9B80FF; }
+.footer-tg span { font-size: 14px; color: #C0B0FF; font-weight: 500; }
+.footer-divider { width: 100%; height: 0.5px; background: rgba(255,255,255,0.08); margin-bottom: 18px; }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.footer-copy { font-size: 13px; color: rgba(255,255,255,0.3); }
+.footer-legal { display: flex; gap: 24px; flex-wrap: wrap; }
+.footer-legal a { font-size: 13px; color: rgba(255,255,255,0.4); text-decoration: none; transition: color .15s; }
+.footer-legal a:hover { color: rgba(255,255,255,0.75); }
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .nav { padding: 14px 20px; }
+  .nav-links { display: none; }
+  .post-hero { padding: 100px 20px 40px; }
+  .post-layout { grid-template-columns: 1fr; padding: 32px 20px 60px; gap: 32px; }
+  .post-sidebar { position: static; }
+  .article-cta { flex-direction: column; }
+  .article-cta a { margin-left: 0; }
+  .footer { padding: 28px 20px 20px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="index.html" class="nav-logo">Mak<span>ads</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#services">Услуги</a></li>
+    <li><a href="index.html#how">Как работаю</a></li>
+    <li><a href="index.html#cases">Кейсы</a></li>
+    <li><a href="blog.html" class="active">Блог</a></li>
+  </ul>
+  <a href="index.html#contact" class="nav-btn">Оставить заявку</a>
+</nav>
+
+<!-- HERO -->
+<div class="post-hero">
+  <div class="post-hero-inner">
+    <div class="post-breadcrumb">
+      <a href="blog.html">Блог</a>
+      <i class="ti ti-chevron-right"></i>
+      <span>Стратегия</span>
+    </div>
+    <span class="post-tag">Стратегия</span>
+    <h1>Как продвигать косметолога и салон косметологии в интернете в 2026 году</h1>
+    <div class="post-meta">
+      <span><i class="ti ti-calendar"></i> 2 июня 2025</span>
+      <span><i class="ti ti-clock"></i> 10 минут</span>
+    </div>
+  </div>
+</div>
+
+<!-- LAYOUT -->
+<div class="post-layout">
+
+  <!-- ARTICLE -->
+  <article class="post-content">
+
+    <p class="post-lead">Если вы ищете волшебную кнопку «запустить рекламу и получить очередь клиентов», можете закрывать статью. В продвижении косметологии так не работает. Конкуренция растёт, стоимость рекламы увеличивается, а клиенты принимают решение о записи всё дольше.</p>
+
+    <p>Поэтому продвижение косметолога — это не один рекламный канал, а система, в которой каждый инструмент помогает формировать доверие и приводить новых клиентов. В этой статье разберём, какие каналы работают лучше всего и как получать заявки не только из поиска, но и из нейросетей.</p>
+
+    <h2 id="why-hard">Почему косметологию сложно продвигать</h2>
+    <p>Косметология относится к услугам с высокой стоимостью принятия решения. Перед записью на лазерную эпиляцию, ботулинотерапию, контурную пластику или чистку лица потенциальный клиент хочет получить ответы на несколько вопросов:</p>
+    <ul>
+      <li>Насколько квалифицирован специалист?</li>
+      <li>Безопасна ли процедура?</li>
+      <li>Будет ли результат соответствовать ожиданиям?</li>
+      <li>Стоит ли эта услуга своих денег?</li>
+    </ul>
+    <p>Именно поэтому для косметологии доверие играет бо́льшую роль, чем в большинстве других сфер услуг.</p>
+
+    <h2 id="channels">Какие каналы продвижения работают в 2026 году</h2>
+    <p>Каждый канал решает свою задачу. Лучшие результаты обычно показывает комбинация нескольких каналов одновременно.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Канал</th>
+          <th>Для чего нужен</th>
+          <th>Скорость результата</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Яндекс.Директ</td><td>Быстро получать заявки</td><td>Высокая</td></tr>
+        <tr><td>SEO-продвижение</td><td>Клиенты из поиска</td><td>Долгосрочная</td></tr>
+        <tr><td>Яндекс Карты и 2ГИС</td><td>Клиенты рядом с локацией</td><td>Средняя</td></tr>
+        <tr><td>Instagram*</td><td>Формировать доверие и показывать результаты</td><td>Средняя</td></tr>
+        <tr><td>UGC-контент</td><td>Повышать конверсию в запись</td><td>Средняя</td></tr>
+        <tr><td>Контент-маркетинг</td><td>Формировать экспертность</td><td>Долгосрочная</td></tr>
+        <tr><td>AI-поиск</td><td>Дополнительный органический трафик</td><td>Долгосрочная</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="site">Сайт — фундамент продвижения</h2>
+    <p>До сих пор многие косметологи работают только через социальные сети. Это удобно на старте, но ограничивает рост. Сайт позволяет получать клиентов из поиска, запускать контекстную рекламу и собирать заявки автоматически.</p>
+    <p>На сайте обязательно должны быть: услуги с подробным описанием, актуальные цены, информация о специалистах, отзывы клиентов, результаты работ и форма записи. Чем проще клиенту получить информацию, тем выше вероятность обращения.</p>
+
+    <h2 id="direct">Контекстная реклама косметолога</h2>
+    <p>Если клиенты нужны в течение ближайших недель, первым каналом обычно становится Яндекс.Директ. Контекстная реклама показывает объявления людям, которые уже ищут конкретную услугу: лазерная эпиляция, увеличение губ, ботокс, чистка лица.</p>
+    <p>Одна из самых распространённых ошибок — запускать рекламу сразу на все услуги одним объявлением. Гораздо эффективнее создавать отдельные кампании под каждое направление и анализировать стоимость заявки по каждой процедуре.</p>
+
+    <div class="article-cta">
+      <div class="article-cta-icon" aria-hidden="true"><i class="ti ti-target"></i></div>
+      <div>
+        <h3>Нужна реклама для косметолога или салона?</h3>
+        <p>Настрою Яндекс.Директ под конкретные услуги — с аналитикой и отчётом по каждой кампании</p>
+      </div>
+      <a href="index.html#contact">Обсудить задачу</a>
+    </div>
+
+    <h2 id="seo">SEO-продвижение косметологии</h2>
+    <p>SEO позволяет получать клиентов из поисковых систем без постоянного увеличения рекламного бюджета. Каждый месяц пользователи ищут: «косметолог в [городе]», «лазерная эпиляция цена», «увеличение губ стоимость», «чистка лица у косметолога».</p>
+    <p>Ошибка многих владельцев салонов — делать одну страницу на все услуги. Для поисковых систем гораздо эффективнее создавать отдельные страницы под каждое направление с детальным описанием, ценами и кейсами.</p>
+
+    <h2 id="maps">Продвижение в Яндекс Картах и 2ГИС</h2>
+    <p>Многие косметологи недооценивают этот канал. На практике большое количество клиентов приходит именно через карты. Обязательно заполните карточки компании: адрес, режим работы, фотографии, описание услуг, цены, контакты.</p>
+    <p>Для локального бизнеса высокий рейтинг и большое количество отзывов часто влияют на поток клиентов сильнее, чем дополнительный рекламный бюджет.</p>
+
+    <h2 id="social">Продвижение через Instagram* и соцсети</h2>
+    <p>Несмотря на ограничения, Instagram* остаётся одной из самых эффективных площадок для косметологов. Причина проста: косметология продаётся через визуальный результат.</p>
+    <p>Лучше всего работают фото и видео до и после, разборы реальных кейсов, отзывы клиентов и сторис из рабочего процесса. При этом аккаунт не должен выглядеть как бесконечная галерея работ — важно показывать свою экспертность и личный подход.</p>
+
+    <h2 id="ugc">UGC-контент: самый недооценённый канал</h2>
+    <p>UGC (User Generated Content) — это контент, который создают сами клиенты: отзывы в сторис, публикации с отметкой салона, видео после процедуры. Для косметологии такой контент часто работает лучше профессиональной рекламы, потому что потенциальные клиенты доверяют другим людям значительно больше, чем рекламным обещаниям.</p>
+
+    <h2 id="ai">Продвижение через нейросети и AI-поиск</h2>
+    <p>Всё больше пользователей ищут информацию через ChatGPT, Яндекс Нейро и AI-поиск Google. Люди задают вопросы: «как выбрать косметолога», «какая процедура подойдёт при пигментации», «где сделать увеличение губ».</p>
+    <p>Чтобы сайт чаще попадал в ответы нейросетей, необходимо публиковать экспертные статьи, подробно описывать услуги, отвечать на популярные вопросы и регулярно собирать отзывы. Чем больше качественной информации о вас в интернете, тем выше вероятность попасть в рекомендации.</p>
+
+    <h2 id="mistakes">Основные ошибки при продвижении</h2>
+    <ul>
+      <li>Работают только через социальные сети</li>
+      <li>Не собирают отзывы</li>
+      <li>Не используют карты и геосервисы</li>
+      <li>Экономят на сайте</li>
+      <li>Не считают стоимость заявки</li>
+      <li>Не ведут аналитику</li>
+      <li>Не создают экспертный контент</li>
+    </ul>
+
+    <h2 id="checklist">Чек-лист продвижения косметолога</h2>
+    <ul class="checklist">
+      <li>Есть современный сайт</li>
+      <li>Настроена аналитика</li>
+      <li>Запущены рекламные кампании</li>
+      <li>Заполнены карточки в Яндекс Картах и 2ГИС</li>
+      <li>Регулярно собираются отзывы</li>
+      <li>Ведутся социальные сети</li>
+      <li>Публикуются кейсы клиентов</li>
+      <li>Используется UGC-контент</li>
+      <li>Ведётся экспертный блог</li>
+      <li>Создаются материалы под поисковые запросы и AI-поиск</li>
+    </ul>
+
+    <h2 id="faq">Частые вопросы</h2>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">Как косметологу найти первых клиентов? <i class="ti ti-chevron-down"></i></div>
+      <div class="faq-a">Самые быстрые способы — контекстная реклама в Яндекс.Директ, карты, работа с отзывами и привлечение клиентов через личные рекомендации.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">Какая реклама лучше для косметолога? <i class="ti ti-chevron-down"></i></div>
+      <div class="faq-a">Если нужны быстрые заявки, чаще всего лучше работает Яндекс.Директ. Для долгосрочного результата стоит дополнительно заниматься SEO-продвижением и контент-маркетингом.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">Нужно ли косметологу вести Instagram*? <i class="ti ti-chevron-down"></i></div>
+      <div class="faq-a">Да. Для большинства косметологических услуг социальные сети остаются одним из главных инструментов формирования доверия.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">Можно ли получать клиентов без сайта? <i class="ti ti-chevron-down"></i></div>
+      <div class="faq-a">Можно, но это ограничивает возможности продвижения. Без сайта невозможно полноценно использовать SEO и сложнее масштабировать рекламу.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">Как попасть в рекомендации нейросетей? <i class="ti ti-chevron-down"></i></div>
+      <div class="faq-a">Публикуйте экспертный контент, собирайте отзывы, подробно описывайте услуги и регулярно обновляйте информацию на сайте.</div>
+    </div>
+
+    <h2 id="conclusion">Вывод</h2>
+    <p>Продвижение косметолога в 2026 году — это не выбор между SEO, рекламой или социальными сетями. Лучшие результаты получают те специалисты и клиники, которые одновременно работают с сайтом, поисковым продвижением, контекстной рекламой, картами, отзывами и экспертными материалами.</p>
+    <p>Чем больше точек доверия вы создаёте вокруг своего бренда, тем проще привлекать клиентов независимо от сезона и изменений рекламных алгоритмов.</p>
+
+    <p class="disclaimer">* Instagram принадлежит компании Meta, деятельность которой признана экстремистской и запрещена на территории РФ.</p>
+
+  </article>
+
+  <!-- SIDEBAR -->
+  <aside class="post-sidebar">
+    <div class="sidebar-toc">
+      <div class="sidebar-toc-title">Содержание</div>
+      <ul class="toc-list">
+        <li><a href="#why-hard">Почему сложно продвигать</a></li>
+        <li><a href="#channels">Какие каналы работают</a></li>
+        <li><a href="#site">Сайт — фундамент</a></li>
+        <li><a href="#direct">Контекстная реклама</a></li>
+        <li><a href="#seo">SEO-продвижение</a></li>
+        <li><a href="#maps">Яндекс Карты и 2ГИС</a></li>
+        <li><a href="#social">Соцсети</a></li>
+        <li><a href="#ugc">UGC-контент</a></li>
+        <li><a href="#ai">Нейросети и AI-поиск</a></li>
+        <li><a href="#mistakes">Ошибки</a></li>
+        <li><a href="#checklist">Чек-лист</a></li>
+        <li><a href="#faq">Частые вопросы</a></li>
+        <li><a href="#conclusion">Вывод</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-cta">
+      <h3>Нужна реклама для косметолога?</h3>
+      <p>Настрою Яндекс.Директ, VK или Telegram Ads под вашу нишу — с отчётами и прозрачными результатами</p>
+      <a href="index.html#contact">Оставить заявку</a>
+    </div>
+  </aside>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <a href="index.html" class="footer-logo">Mak<span>ads</span></a>
+    <a href="https://t.me/+mLtKrqMsWK05MjQy" class="footer-tg" target="_blank" rel="noopener">
+      <i class="ti ti-brand-telegram" aria-hidden="true"></i>
+      <span>Telegram-канал</span>
+    </a>
+  </div>
+  <div class="footer-divider"></div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Makads. Интернет-реклама для бизнеса</div>
+    <div class="footer-legal">
+      <a href="https://workhardmarish.github.io/makads/privacy/">Политика обработки персональных данных</a>
+      <a href="https://workhardmarish.github.io/makads/privacy/adv">Согласие на получение рекламных предложений</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// FAQ toggle
+function toggleFaq(el) { el.classList.toggle('open'); }
+
+// TOC active link on scroll
+const headings = document.querySelectorAll('.post-content h2[id]');
+const tocLinks = document.querySelectorAll('.toc-list a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  headings.forEach(h => { if (window.scrollY >= h.offsetTop - 120) current = h.id; });
+  tocLinks.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+}, { passive: true });
+</script>
+</body>
+</html>
