@@ -345,48 +345,15 @@ body {
 
 <!-- MAIN -->
 <main class="blog-main">
-
-  <!-- EMPTY STATE — убери этот блок когда появятся статьи -->
-  <div class="empty-state reveal">
+  <div class="posts-grid" id="postsGrid"></div>
+  <div class="empty-state" id="emptyState" style="display:none;">
     <div class="empty-icon" aria-hidden="true"><i class="ti ti-writing"></i></div>
     <h2>Статьи скоро появятся</h2>
     <p>Здесь будут разборы, кейсы и практические советы по интернет-рекламе. Подпишись на Telegram-канал — там появляются первыми.</p>
     <a href="https://t.me/+mLtKrqMsWK05MjQy" class="empty-tg" target="_blank" rel="noopener">
-      <i class="ti ti-brand-telegram"></i>
-      Подписаться на канал
+      <i class="ti ti-brand-telegram"></i> Подписаться на канал
     </a>
   </div>
-
-  <!-- PLACEHOLDER CARDS (визуальные заглушки) -->
-  <div class="placeholder-grid" aria-hidden="true">
-    <div class="placeholder-card"><i class="ti ti-file-text"></i><span>Скоро</span></div>
-    <div class="placeholder-card"><i class="ti ti-file-text"></i><span>Скоро</span></div>
-    <div class="placeholder-card"><i class="ti ti-file-text"></i><span>Скоро</span></div>
-  </div>
-
-  <!--
-    КАК ДОБАВИТЬ СТАТЬЮ:
-    Скопируй блок ниже, заполни данные и вставь перед empty-state.
-    Когда добавишь первую статью — удали блоки empty-state и placeholder-grid.
-
-  <div class="posts-grid">
-    <a href="posts/название-статьи.html" class="post reveal reveal-d1">
-      <div class="post-thumb-wrap">
-        <div class="post-thumb post-thumb-1"><i class="ti ti-target" aria-hidden="true"></i></div>
-      </div>
-      <div class="post-body">
-        <span class="post-tag">Яндекс.Директ</span>
-        <h3>Заголовок статьи</h3>
-        <p>Краткое описание о чём статья — 1-2 предложения.</p>
-        <div class="post-footer">
-          <span class="post-date">1 июня 2025</span>
-          <i class="ti ti-arrow-right post-arrow" aria-hidden="true"></i>
-        </div>
-      </div>
-    </a>
-  </div>
-  -->
-
 </main>
 
 <!-- SUBSCRIBE -->
@@ -419,19 +386,70 @@ body {
 </footer>
 
 <script>
-// Reveal
-const revealEls = document.querySelectorAll('.reveal');
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-}, { threshold: 0.1 });
-revealEls.forEach(el => obs.observe(el));
+const THUMBS = ['post-thumb-1','post-thumb-2','post-thumb-3'];
+const ICONS  = ['ti-target','ti-adjustments-horizontal','ti-chart-bar','ti-sparkles','ti-bulb','ti-writing'];
 
-// Filter buttons
+let allPosts = [];
+let activeFilter = 'all';
+
+function renderPosts(posts) {
+  const grid = document.getElementById('postsGrid');
+  const empty = document.getElementById('emptyState');
+  if (!posts.length) {
+    grid.style.display = 'none';
+    empty.style.display = 'block';
+    return;
+  }
+  grid.style.display = 'grid';
+  empty.style.display = 'none';
+  grid.innerHTML = posts.map((p, i) => `
+    <a href="${p.file}" class="post reveal reveal-d${(i % 3) + 1}" data-tag="${p.tagKey}">
+      <div class="post-thumb-wrap">
+        <div class="post-thumb ${THUMBS[i % THUMBS.length]}">
+          <i class="ti ${ICONS[i % ICONS.length]}" aria-hidden="true"></i>
+        </div>
+      </div>
+      <div class="post-body">
+        <span class="post-tag">${p.tag}</span>
+        <h3>${p.title}</h3>
+        <p>${p.description}</p>
+        <div class="post-footer">
+          <span class="post-date">${p.dateLabel}</span>
+          <i class="ti ti-arrow-right post-arrow" aria-hidden="true"></i>
+        </div>
+      </div>
+    </a>
+  `).join('');
+
+  // Re-run reveal observer on new elements
+  document.querySelectorAll('.post.reveal').forEach(el => revealObs.observe(el));
+}
+
 function setFilter(btn, category) {
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  // Когда появятся статьи — фильтрация по data-category
+  activeFilter = category;
+  const filtered = category === 'all'
+    ? allPosts
+    : allPosts.filter(p => p.tagKey === category);
+  renderPosts(filtered);
 }
+
+// Reveal observer
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.1 });
+
+// Load posts
+fetch('posts.json')
+  .then(r => r.json())
+  .then(data => {
+    allPosts = data.sort((a, b) => new Date(b.date) - new Date(a.date));
+    renderPosts(allPosts);
+  })
+  .catch(() => {
+    document.getElementById('emptyState').style.display = 'block';
+  });
 </script>
 </body>
 </html>
