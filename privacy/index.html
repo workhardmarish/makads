@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Политика обработки персональных данных — Makads</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #F7F5FF;
+      --surface: #FFFFFF;
+      --purple: #7A50F0;
+      --purple-light: #9B80FF;
+      --purple-pale: #EDE8FF;
+      --text: #1A1535;
+      --text-mid: #4A4270;
+      --text-muted: #8A82AA;
+      --border: rgba(122, 80, 240, 0.12);
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 48px;
+      background: rgba(247, 245, 255, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 0.5px solid var(--border);
+    }
+    .nav-logo {
+      font-size: 20px; font-weight: 700; letter-spacing: -0.5px;
+      color: var(--text); text-decoration: none;
+    }
+    .nav-logo span { color: var(--purple); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      font-size: 14px; font-weight: 500; color: var(--text-mid);
+      text-decoration: none; transition: color .15s;
+    }
+    .nav-links a:hover { color: var(--purple); }
+    .nav-btn {
+      font-size: 14px; font-weight: 600;
+      color: #fff; background: var(--purple);
+      padding: 10px 22px; border-radius: var(--radius-sm);
+      text-decoration: none; transition: opacity .15s;
+    }
+    .nav-btn:hover { opacity: 0.88; }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      padding: 130px 48px 56px;
+      background: linear-gradient(160deg, #EDE8FF 0%, #F7F5FF 55%);
+      border-bottom: 1px solid var(--border);
+    }
+    .page-hero-inner { max-width: 860px; margin: 0 auto; }
+    .breadcrumb {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; color: var(--text-muted); margin-bottom: 20px;
+    }
+    .breadcrumb a { color: var(--purple); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb i { font-size: 10px; color: var(--text-muted); }
+    .page-hero h1 {
+      font-size: 38px; font-weight: 700; line-height: 1.2;
+      letter-spacing: -1px; color: var(--text); margin-bottom: 16px;
+    }
+    .page-hero-meta {
+      display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+    }
+    .meta-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; color: var(--text-muted);
+    }
+    .meta-tag i { font-size: 12px; color: var(--purple-light); }
+
+    /* ── LAYOUT ── */
+    .content-wrap {
+      max-width: 860px; margin: 0 auto;
+      padding: 56px 48px 80px;
+    }
+
+    /* ── TOC ── */
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      margin-bottom: 32px;
+    }
+    .toc-title {
+      font-size: 13px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .toc-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .toc-list li { display: flex; align-items: baseline; gap: 10px; }
+    .toc-num {
+      font-size: 12px; font-weight: 700; color: var(--purple-light);
+      min-width: 20px; flex-shrink: 0;
+    }
+    .toc-list a {
+      font-size: 14px; color: var(--text-mid); text-decoration: none;
+      transition: color .15s;
+    }
+    .toc-list a:hover { color: var(--purple); }
+
+    /* ── DOC SECTIONS ── */
+    .doc-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px 40px;
+      margin-bottom: 20px;
+      scroll-margin-top: 90px;
+    }
+
+    .doc-section h2 {
+      font-size: 15px; font-weight: 700;
+      color: var(--purple);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 22px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .doc-section h2 i { font-size: 14px; opacity: 0.8; }
+
+    .doc-section p {
+      font-size: 15px; color: var(--text-mid);
+      line-height: 1.75; margin-bottom: 14px;
+    }
+    .doc-section p:last-child { margin-bottom: 0; }
+
+    .doc-section strong { color: var(--text); font-weight: 600; }
+
+    /* Dash list (права и обязанности) */
+    .dash-list { list-style: none; margin: 10px 0 14px; }
+    .dash-list li {
+      font-size: 15px; color: var(--text-mid); line-height: 1.7;
+      padding: 7px 0 7px 22px; position: relative;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .dash-list li:last-child { border-bottom: none; }
+    .dash-list li::before {
+      content: '—';
+      position: absolute; left: 0; top: 7px;
+      color: var(--purple-light); font-weight: 600;
+    }
+
+    /* Dot list */
+    .dot-list { list-style: none; margin: 10px 0 14px; }
+    .dot-list li {
+      font-size: 15px; color: var(--text-mid); line-height: 1.7;
+      padding: 7px 0 7px 24px; position: relative;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .dot-list li:last-child { border-bottom: none; }
+    .dot-list li::before {
+      content: '';
+      position: absolute; left: 0; top: 50%;
+      transform: translateY(-50%);
+      width: 7px; height: 7px;
+      background: var(--purple-light);
+      border-radius: 50%; opacity: 0.65;
+    }
+
+    /* Subsection heading */
+    .sub-heading {
+      font-size: 14px; font-weight: 600; color: var(--text);
+      margin: 22px 0 10px; padding-bottom: 8px;
+      border-bottom: 1px solid var(--purple-pale);
+    }
+
+    /* Table for goals */
+    .data-table {
+      width: 100%; border-collapse: collapse; margin: 16px 0;
+      font-size: 14px;
+    }
+    .data-table th {
+      background: var(--purple-pale);
+      color: var(--purple);
+      font-weight: 600; font-size: 13px;
+      text-align: left; padding: 12px 16px;
+      border-bottom: 1px solid rgba(122, 80, 240, 0.18);
+    }
+    .data-table th:first-child { border-radius: var(--radius-sm) 0 0 0; }
+    .data-table th:last-child { border-radius: 0 var(--radius-sm) 0 0; }
+    .data-table td {
+      padding: 12px 16px; vertical-align: top;
+      color: var(--text-mid); line-height: 1.6;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table td:first-child { color: var(--text); font-weight: 500; width: 32%; }
+
+    /* Email link */
+    .doc-section a {
+      color: var(--purple); text-decoration: none;
+      font-weight: 500; border-bottom: 1px solid rgba(122, 80, 240, 0.25);
+      transition: border-color .15s;
+    }
+    .doc-section a:hover { border-color: var(--purple); }
+
+    /* Info box */
+    .info-box {
+      background: var(--purple-pale);
+      border-left: 3px solid var(--purple);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 16px 20px; margin: 18px 0;
+    }
+    .info-box p { font-size: 14px; color: var(--text-mid); margin: 0; }
+
+    .doc-date {
+      text-align: center;
+      font-size: 13px; color: var(--text-muted);
+      margin-top: 40px; padding-top: 24px;
+      border-top: 0.5px solid var(--border);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #1A1535;
+      padding: 32px 48px 24px;
+    }
+    .footer-top {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 24px;
+    }
+    .footer-logo {
+      font-size: 18px; font-weight: 700; color: #fff;
+      letter-spacing: -0.5px; text-decoration: none;
+    }
+    .footer-logo span { color: #9B80FF; }
+    .footer-tg {
+      display: flex; align-items: center; gap: 9px; text-decoration: none;
+      background: rgba(255,255,255,0.08);
+      border: 0.5px solid rgba(255,255,255,0.15);
+      border-radius: var(--radius-sm); padding: 9px 18px;
+      transition: background .15s;
+    }
+    .footer-tg:hover { background: rgba(255,255,255,0.15); }
+    .footer-tg i { font-size: 17px; color: #9B80FF; }
+    .footer-tg span { font-size: 14px; color: #C0B0FF; font-weight: 500; }
+    .footer-divider {
+      width: 100%; height: 0.5px;
+      background: rgba(255,255,255,0.08);
+      margin-bottom: 18px;
+    }
+    .footer-bottom {
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 12px;
+    }
+    .footer-copy { font-size: 13px; color: rgba(255,255,255,0.3); }
+    .footer-legal { display: flex; gap: 24px; flex-wrap: wrap; }
+    .footer-legal a {
+      font-size: 13px; color: rgba(255,255,255,0.4);
+      text-decoration: none; transition: color .15s;
+    }
+    .footer-legal a:hover { color: rgba(255,255,255,0.75); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+      .nav { padding: 14px 20px; }
+      .nav-links { display: none; }
+      .page-hero { padding: 110px 20px 40px; }
+      .page-hero h1 { font-size: 26px; }
+      .content-wrap { padding: 32px 20px 60px; }
+      .doc-section { padding: 24px 22px; }
+      .toc { padding: 22px 20px; }
+      .data-table { font-size: 13px; }
+      .data-table td:first-child { width: auto; }
+      footer { padding: 28px 20px 20px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="/makads/" class="nav-logo">Mak<span>ads</span></a>
+  <ul class="nav-links">
+    <li><a href="/makads/#services">Услуги</a></li>
+    <li><a href="/makads/#how">Как работаю</a></li>
+    <li><a href="/makads/#cases">Кейсы</a></li>
+    <li><a href="/makads/blog.html">Блог</a></li>
+  </ul>
+  <a href="/makads/#contact" class="nav-btn">Оставить заявку</a>
+</nav>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb">
+      <a href="/makads/">Главная</a>
+      <i class="fa-solid fa-chevron-right"></i>
+      <span>Политика обработки персональных данных</span>
+    </div>
+    <h1>Политика обработки<br>персональных данных</h1>
+    <div class="page-hero-meta">
+      <span class="meta-tag"><i class="fa-regular fa-calendar"></i> Редакция от 21 июня 2026 г.</span>
+      <span class="meta-tag"><i class="fa-regular fa-user"></i> ИП Петрова Марина Андреевна</span>
+      <span class="meta-tag"><i class="fa-regular fa-file-lines"></i> ФЗ № 152 «О персональных данных»</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<div class="content-wrap">
+
+  <!-- TOC -->
+  <div class="toc">
+    <div class="toc-title">Содержание</div>
+    <ul class="toc-list">
+      <li><span class="toc-num">1</span><a href="#s1">Общие положения</a></li>
+      <li><span class="toc-num">2</span><a href="#s2">Основные понятия</a></li>
+      <li><span class="toc-num">3</span><a href="#s3">Права и обязанности Оператора</a></li>
+      <li><span class="toc-num">4</span><a href="#s4">Права и обязанности субъектов</a></li>
+      <li><span class="toc-num">5</span><a href="#s5">Принципы обработки</a></li>
+      <li><span class="toc-num">6</span><a href="#s6">Цели обработки</a></li>
+      <li><span class="toc-num">7</span><a href="#s7">Условия обработки</a></li>
+      <li><span class="toc-num">8</span><a href="#s8">Порядок сбора, хранения и передачи</a></li>
+      <li><span class="toc-num">9</span><a href="#s9">Перечень действий Оператора</a></li>
+      <li><span class="toc-num">10</span><a href="#s10">Трансграничная передача</a></li>
+      <li><span class="toc-num">11</span><a href="#s11">Конфиденциальность</a></li>
+      <li><span class="toc-num">12</span><a href="#s12">Заключительные положения</a></li>
+    </ul>
+  </div>
+
+  <!-- 1. Общие положения -->
+  <div class="doc-section" id="s1">
+    <h2><i class="fa-regular fa-circle-info"></i> 1. Общие положения</h2>
+    <p>Настоящая политика обработки персональных данных составлена в соответствии с требованиями Федерального закона от 27.07.2006 № 152-ФЗ «О персональных данных» и определяет порядок обработки персональных данных и меры по обеспечению их безопасности, предпринимаемые <strong>ИП Петровой Мариной Андреевной</strong> (далее — Оператор).</p>
+    <p><strong>1.1.</strong> Оператор ставит своей важнейшей целью и условием осуществления деятельности соблюдение прав и свобод человека и гражданина при обработке его персональных данных, в том числе защиту прав на неприкосновенность частной жизни, личную и семейную тайну.</p>
+    <p><strong>1.2.</strong> Настоящая Политика применяется ко всей информации, которую Оператор может получить о посетителях веб-сайта <a href="https://workhardmarish.github.io/makads/" target="_blank">workhardmarish.github.io/makads</a>.</p>
+  </div>
+
+  <!-- 2. Понятия -->
+  <div class="doc-section" id="s2">
+    <h2><i class="fa-regular fa-book"></i> 2. Основные понятия</h2>
+    <ul class="dot-list">
+      <li><strong>Автоматизированная обработка</strong> — обработка персональных данных с помощью средств вычислительной техники.</li>
+      <li><strong>Блокирование</strong> — временное прекращение обработки персональных данных (за исключением случаев, если обработка необходима для их уточнения).</li>
+      <li><strong>Веб-сайт</strong> — совокупность материалов и программ, обеспечивающих их доступность в сети интернет по адресу workhardmarish.github.io/makads.</li>
+      <li><strong>Обезличивание</strong> — действия, в результате которых невозможно определить принадлежность персональных данных конкретному пользователю без дополнительной информации.</li>
+      <li><strong>Обработка персональных данных</strong> — любые действия с персональными данными: сбор, запись, систематизация, накопление, хранение, уточнение, извлечение, использование, передача, обезличивание, блокирование, удаление, уничтожение.</li>
+      <li><strong>Оператор</strong> — лицо, самостоятельно или совместно с другими лицами организующее и/или осуществляющее обработку персональных данных, а также определяющее её цели и состав.</li>
+      <li><strong>Персональные данные</strong> — любая информация, относящаяся прямо или косвенно к определённому пользователю сайта workhardmarish.github.io/makads.</li>
+      <li><strong>Пользователь</strong> — любой посетитель сайта workhardmarish.github.io/makads.</li>
+      <li><strong>Распространение</strong> — действия, направленные на раскрытие персональных данных неопределённому кругу лиц.</li>
+      <li><strong>Трансграничная передача</strong> — передача персональных данных на территорию иностранного государства.</li>
+      <li><strong>Уничтожение</strong> — действия, в результате которых персональные данные уничтожаются безвозвратно.</li>
+    </ul>
+  </div>
+
+  <!-- 3. Права Оператора -->
+  <div class="doc-section" id="s3">
+    <h2><i class="fa-regular fa-shield-halved"></i> 3. Права и обязанности Оператора</h2>
+    <p class="sub-heading">Оператор вправе:</p>
+    <ul class="dash-list">
+      <li>получать от субъекта персональных данных достоверную информацию и/или документы, содержащие персональные данные;</li>
+      <li>в случае отзыва согласия продолжить обработку персональных данных без согласия субъекта при наличии оснований, предусмотренных Законом о персональных данных;</li>
+      <li>самостоятельно определять состав мер, необходимых для выполнения требований Закона о персональных данных.</li>
+    </ul>
+    <p class="sub-heading">Оператор обязан:</p>
+    <ul class="dash-list">
+      <li>предоставлять субъекту по его просьбе информацию, касающуюся обработки его персональных данных;</li>
+      <li>организовывать обработку персональных данных в порядке, установленном действующим законодательством РФ;</li>
+      <li>отвечать на обращения и запросы субъектов персональных данных в соответствии с требованиями Закона;</li>
+      <li>сообщать в уполномоченный орган необходимую информацию в течение 10 дней с даты получения запроса;</li>
+      <li>обеспечивать неограниченный доступ к настоящей Политике;</li>
+      <li>принимать правовые, организационные и технические меры для защиты персональных данных от неправомерного доступа, уничтожения, изменения, блокирования, копирования и распространения;</li>
+      <li>прекратить обработку и уничтожить персональные данные в порядке и случаях, предусмотренных Законом о персональных данных;</li>
+      <li>исполнять иные обязанности, предусмотренные Законом о персональных данных.</li>
+    </ul>
+  </div>
+
+  <!-- 4. Права субъектов -->
+  <div class="doc-section" id="s4">
+    <h2><i class="fa-regular fa-user-shield"></i> 4. Права и обязанности субъектов персональных данных</h2>
+    <p class="sub-heading">Субъекты персональных данных вправе:</p>
+    <ul class="dash-list">
+      <li>получать информацию, касающуюся обработки своих персональных данных, в доступной форме;</li>
+      <li>требовать уточнения, блокирования или уничтожения своих персональных данных, если они являются неполными, устаревшими, неточными или незаконно полученными;</li>
+      <li>выдвигать условие предварительного согласия при обработке персональных данных в целях продвижения товаров, работ и услуг;</li>
+      <li>отозвать согласие на обработку персональных данных;</li>
+      <li>обжаловать неправомерные действия Оператора в уполномоченный орган по защите прав субъектов персональных данных или в судебном порядке.</li>
+    </ul>
+    <p class="sub-heading">Субъекты персональных данных обязаны:</p>
+    <ul class="dash-list">
+      <li>предоставлять Оператору достоверные данные о себе;</li>
+      <li>сообщать Оператору об изменении своих персональных данных.</li>
+    </ul>
+    <p><strong>4.3.</strong> Лица, передавшие Оператору недостоверные сведения о себе либо сведения о другом субъекте без его согласия, несут ответственность в соответствии с законодательством РФ.</p>
+  </div>
+
+  <!-- 5. Принципы -->
+  <div class="doc-section" id="s5">
+    <h2><i class="fa-regular fa-list-check"></i> 5. Принципы обработки персональных данных</h2>
+    <ul class="dot-list">
+      <li>Обработка осуществляется на законной и справедливой основе.</li>
+      <li>Обработка ограничивается конкретными, заранее определёнными и законными целями. Обработка, несовместимая с целями сбора, не допускается.</li>
+      <li>Не допускается объединение баз данных, обработка которых осуществляется в целях, несовместимых между собой.</li>
+      <li>Обрабатываются только персональные данные, которые отвечают целям их обработки.</li>
+      <li>Содержание и объём обрабатываемых данных соответствуют заявленным целям; избыточность не допускается.</li>
+      <li>Обеспечивается точность, достаточность и актуальность персональных данных по отношению к целям обработки.</li>
+      <li>Хранение осуществляется не дольше, чем этого требуют цели обработки. По достижении целей данные уничтожаются или обезличиваются.</li>
+    </ul>
+  </div>
+
+  <!-- 6. Цели -->
+  <div class="doc-section" id="s6">
+    <h2><i class="fa-regular fa-bullseye"></i> 6. Цели обработки персональных данных</h2>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Параметр</th>
+          <th>Описание</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Цель обработки</td>
+          <td>Информирование пользователя посредством отправки электронных писем; обработка входящих заявок с сайта для оказания услуг</td>
+        </tr>
+        <tr>
+          <td>Персональные данные</td>
+          <td>Фамилия, имя, отчество; адрес электронной почты; номер телефона</td>
+        </tr>
+        <tr>
+          <td>Правовые основания</td>
+          <td>ФЗ от 27.07.2006 № 149-ФЗ «Об информации, информационных технологиях и о защите информации»; согласие субъекта персональных данных</td>
+        </tr>
+        <tr>
+          <td>Виды обработки</td>
+          <td>Сбор, запись, систематизация, накопление, хранение, уничтожение и обезличивание; отправка информационных писем на адрес электронной почты</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 7. Условия -->
+  <div class="doc-section" id="s7">
+    <h2><i class="fa-regular fa-scale-balanced"></i> 7. Условия обработки персональных данных</h2>
+    <p><strong>7.1.</strong> Обработка персональных данных осуществляется с согласия субъекта персональных данных.</p>
+    <p><strong>7.2.</strong> Обработка может осуществляться в случаях, предусмотренных законодательством Российской Федерации.</p>
+    <p><strong>7.3.</strong> Обработка может осуществляться в целях исполнения судебного акта или акта другого уполномоченного органа.</p>
+    <p><strong>7.4.</strong> Обработка осуществляется в целях исполнения договора, стороной или выгодоприобретателем которого является субъект персональных данных, либо для заключения договора по инициативе субъекта.</p>
+    <p><strong>7.5.</strong> Обработка осуществляется для реализации законных интересов Оператора при условии, что права и свободы субъекта персональных данных при этом не нарушаются.</p>
+  </div>
+
+  <!-- 8. Порядок -->
+  <div class="doc-section" id="s8">
+    <h2><i class="fa-regular fa-lock"></i> 8. Порядок сбора, хранения и передачи персональных данных</h2>
+    <p>Безопасность персональных данных обеспечивается путём реализации правовых, организационных и технических мер, необходимых для выполнения требований действующего законодательства в области защиты персональных данных.</p>
+    <p><strong>8.1.</strong> Оператор обеспечивает сохранность персональных данных и принимает все возможные меры, исключающие доступ к ним неуполномоченных лиц.</p>
+    <p><strong>8.2.</strong> Персональные данные пользователя ни при каких условиях не будут переданы третьим лицам, за исключением случаев, предусмотренных действующим законодательством, либо если субъектом дано согласие на передачу данных третьему лицу для исполнения обязательств по договору.</p>
+    <p><strong>8.3.</strong> В случае выявления неточностей пользователь может актуализировать их, направив уведомление на электронную почту <a href="mailto:ma.petrova.work@gmail.com">ma.petrova.work@gmail.com</a> с пометкой <strong>«Актуализация персональных данных»</strong>.</p>
+    <p><strong>8.4.</strong> Срок обработки персональных данных определяется достижением целей, для которых они были собраны, если иной срок не предусмотрен договором или действующим законодательством.</p>
+
+    <div class="info-box">
+      <p>Пользователь может в любой момент отозвать согласие на обработку персональных данных, направив уведомление на <a href="mailto:ma.petrova.work@gmail.com">ma.petrova.work@gmail.com</a> с пометкой <strong>«Отзыв согласия на обработку персональных данных»</strong>.</p>
+    </div>
+
+    <p><strong>8.5.</strong> Информация, собираемая сторонними сервисами (в том числе средствами связи и другими поставщиками услуг), хранится и обрабатывается этими лицами в соответствии с их собственными пользовательскими соглашениями. Оператор не несёт ответственности за действия указанных третьих лиц.</p>
+    <p><strong>8.6.</strong> Оператор обеспечивает конфиденциальность персональных данных при их обработке.</p>
+    <p><strong>8.7.</strong> Оператор хранит персональные данные в форме, позволяющей идентифицировать субъекта, не дольше, чем этого требуют цели обработки.</p>
+    <p><strong>8.8.</strong> Условием прекращения обработки является достижение целей обработки, истечение срока действия или отзыв согласия субъекта, либо выявление неправомерной обработки.</p>
+  </div>
+
+  <!-- 9. Действия -->
+  <div class="doc-section" id="s9">
+    <h2><i class="fa-regular fa-gears"></i> 9. Перечень действий Оператора с персональными данными</h2>
+    <p><strong>9.1.</strong> Оператор осуществляет сбор, запись, систематизацию, накопление, хранение, уточнение (обновление, изменение), извлечение, использование, передачу (распространение, предоставление, доступ), обезличивание, блокирование, удаление и уничтожение персональных данных.</p>
+    <p><strong>9.2.</strong> Оператор осуществляет автоматизированную обработку персональных данных с получением и/или передачей полученной информации по информационно-телекоммуникационным сетям или без таковой.</p>
+  </div>
+
+  <!-- 10. Трансграничная -->
+  <div class="doc-section" id="s10">
+    <h2><i class="fa-regular fa-globe"></i> 10. Трансграничная передача персональных данных</h2>
+    <p><strong>10.1.</strong> До начала осуществления трансграничной передачи персональных данных Оператор обязан уведомить уполномоченный орган по защите прав субъектов персональных данных о своём намерении осуществлять такую передачу.</p>
+    <p><strong>10.2.</strong> До подачи указанного уведомления Оператор обязан получить от органов власти иностранного государства, иностранных физических или юридических лиц, которым планируется передача персональных данных, соответствующие сведения.</p>
+  </div>
+
+  <!-- 11. Конфиденциальность -->
+  <div class="doc-section" id="s11">
+    <h2><i class="fa-regular fa-eye-slash"></i> 11. Конфиденциальность персональных данных</h2>
+    <p>Оператор и иные лица, получившие доступ к персональным данным, обязаны не раскрывать третьим лицам и не распространять персональные данные без согласия субъекта персональных данных, если иное не предусмотрено федеральным законом.</p>
+  </div>
+
+  <!-- 12. Заключительные -->
+  <div class="doc-section" id="s12">
+    <h2><i class="fa-regular fa-circle-check"></i> 12. Заключительные положения</h2>
+    <p><strong>12.1.</strong> Пользователь может получить любые разъяснения по вопросам обработки его персональных данных, обратившись к Оператору по электронной почте: <a href="mailto:ma.petrova.work@gmail.com">ma.petrova.work@gmail.com</a>.</p>
+    <p><strong>12.2.</strong> В настоящем документе будут отражены любые изменения политики обработки персональных данных. Политика действует бессрочно до замены её новой версией.</p>
+    <p><strong>12.3.</strong> Актуальная версия Политики в свободном доступе расположена по адресу: <a href="https://workhardmarish.github.io/makads/privacy/" target="_blank">workhardmarish.github.io/makads/privacy</a>.</p>
+  </div>
+
+  <p class="doc-date">Политика вступает в силу с момента публикации · Редакция от 21 июня 2026 г.</p>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <a href="/makads/" class="footer-logo">Mak<span>ads</span></a>
+    <a href="https://t.me/+mLtKrqMsWK05MjQy" class="footer-tg" target="_blank">
+      <i class="fa-brands fa-telegram"></i>
+      <span>Telegram-канал</span>
+    </a>
+  </div>
+  <div class="footer-divider"></div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 ИП Петрова М.А. · Makads · Интернет-реклама для бизнеса</span>
+    <div class="footer-legal">
+      <a href="/makads/privacy/">Политика обработки персональных данных</a>
+      <a href="/makads/privacy/adv">Согласие на рекламные сообщения</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
