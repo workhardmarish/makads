@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Как привлекать клиентов в барбершоп через интернет — Makads</title>
+<meta name="description" content="Рабочие каналы продвижения барбершопа: Яндекс.Директ, SEO, карты, соцсети. Сколько стоит привлечение клиента и какие ошибки съедают бюджет.">
+<meta name="theme-color" content="#ede9ff">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"></noscript>
+<link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css"></noscript>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --c-bg:      #f0ecff;
+  --c-bg2:     #f5f3ff;
+  --c-white:   #ffffff;
+  --c-dark:    #120A50;
+  --c-mid:     #2E2A55;
+  --c-muted:   #5050A0;
+  --c-border:  rgba(100,80,220,0.12);
+  --c-purple:  #4A35D4;
+  --c-purple2: #5B3FD4;
+  --c-purple3: #7B5CF5;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--c-white);
+  color: var(--c-dark);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* NAV */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 48px;
+  background: rgba(240,236,255,0.88);
+  backdrop-filter: blur(12px);
+  border-bottom: 0.5px solid var(--c-border);
+}
+.nav-logo { font-size: 19px; font-weight: 700; color: #2A1AA0; letter-spacing: -0.5px; text-decoration: none; }
+.nav-logo span { color: var(--c-purple3); }
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a { font-size: 14px; color: #3A3560; text-decoration: none; transition: color .15s; }
+.nav-links a:hover { color: var(--c-purple); }
+.nav-links a.active { color: var(--c-purple); }
+.nav-btn {
+  background: var(--c-purple); color: #fff;
+  font-size: 14px; font-weight: 500;
+  border: none; border-radius: var(--radius-sm);
+  padding: 10px 20px; cursor: pointer;
+  text-decoration: none;
+  transition: background .15s, transform .15s;
+}
+.nav-btn:hover { background: #5B46E5; transform: translateY(-1px); }
+
+/* HERO */
+.post-hero {
+  padding: 120px 48px 56px;
+  background: linear-gradient(130deg, #ede9ff 0%, #dceeff 50%, #e6f3ff 100%);
+  border-bottom: 0.5px solid var(--c-border);
+}
+.post-hero-inner { max-width: 760px; margin: 0 auto; }
+.post-breadcrumb {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; color: var(--c-muted); margin-bottom: 20px;
+}
+.post-breadcrumb a { color: var(--c-purple); text-decoration: none; }
+.post-breadcrumb i { font-size: 14px; }
+.post-tag {
+  display: inline-block;
+  font-size: 11px; font-weight: 500; letter-spacing: 1px;
+  text-transform: uppercase; color: var(--c-purple2);
+  background: rgba(91,63,212,0.1); border-radius: 6px;
+  padding: 4px 12px; margin-bottom: 18px;
+}
+.post-hero h1 {
+  font-size: clamp(24px, 4vw, 42px);
+  font-weight: 700; line-height: 1.12;
+  letter-spacing: -1.5px; color: var(--c-dark);
+  margin-bottom: 20px;
+}
+.post-meta {
+  display: flex; align-items: center; gap: 20px;
+  font-size: 13px; color: var(--c-muted);
+}
+.post-meta span { display: flex; align-items: center; gap: 6px; }
+.post-meta i { font-size: 15px; color: var(--c-purple3); }
+
+/* LAYOUT */
+.post-layout {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 48px;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 56px 48px 80px;
+  align-items: start;
+}
+
+/* ARTICLE */
+.post-content { min-width: 0; }
+
+.post-content h2 {
+  font-size: 24px; font-weight: 700;
+  letter-spacing: -0.5px; color: var(--c-dark);
+  margin: 44px 0 14px; padding-top: 8px;
+}
+.post-content h3 {
+  font-size: 18px; font-weight: 600;
+  color: var(--c-dark); margin: 28px 0 10px;
+}
+.post-content p { color: var(--c-mid); margin-bottom: 18px; }
+.post-content ul, .post-content ol { padding-left: 20px; margin-bottom: 18px; }
+.post-content li { color: var(--c-mid); margin-bottom: 8px; }
+.post-content strong { color: var(--c-dark); font-weight: 600; }
+
+/* Lead */
+.post-lead {
+  font-size: 18px; color: var(--c-mid);
+  line-height: 1.7; margin-bottom: 36px;
+  padding: 24px 28px;
+  background: var(--c-bg2);
+  border-left: 3px solid var(--c-purple3);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+/* Table */
+.post-content table {
+  width: 100%; border-collapse: collapse;
+  margin: 24px 0 28px; font-size: 14px;
+}
+.post-content th {
+  background: var(--c-bg2); color: var(--c-dark);
+  font-weight: 600; font-size: 12px;
+  text-transform: uppercase; letter-spacing: 0.5px;
+  padding: 12px 16px; text-align: left;
+  border-bottom: 1px solid var(--c-border);
+}
+.post-content td {
+  padding: 12px 16px; color: var(--c-mid);
+  border-bottom: 0.5px solid var(--c-border);
+}
+.post-content tr:last-child td { border-bottom: none; }
+.post-content tr:hover td { background: rgba(240,236,255,0.4); }
+
+/* Steps plan */
+.plan-grid { display: flex; flex-direction: column; gap: 16px; margin: 20px 0 28px; }
+.plan-week {
+  background: var(--c-bg2);
+  border: 0.5px solid var(--c-border);
+  border-radius: var(--radius-md);
+  padding: 20px 22px;
+}
+.plan-week-label {
+  font-size: 11px; font-weight: 600; letter-spacing: 1px;
+  text-transform: uppercase; color: var(--c-purple3);
+  margin-bottom: 12px;
+}
+.plan-week ul { padding-left: 18px; margin: 0; }
+.plan-week li { color: var(--c-mid); font-size: 14px; margin-bottom: 6px; }
+.plan-week li:last-child { margin-bottom: 0; }
+
+/* Errors list */
+.errors-list { display: flex; flex-direction: column; gap: 12px; margin: 20px 0 28px; }
+.error-item {
+  display: flex; gap: 14px; align-items: flex-start;
+  background: var(--c-white); border: 0.5px solid var(--c-border);
+  border-radius: var(--radius-md); padding: 16px 18px;
+}
+.error-num {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: rgba(248,81,73,0.1);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700; color: #D04040;
+  flex-shrink: 0;
+}
+.error-item h4 { font-size: 14px; font-weight: 600; color: var(--c-dark); margin-bottom: 4px; }
+.error-item p { font-size: 13px; color: var(--c-mid); margin: 0; }
+
+/* FAQ */
+.faq-item {
+  border: 0.5px solid var(--c-border);
+  border-radius: var(--radius-md);
+  margin-bottom: 10px; overflow: hidden;
+}
+.faq-q {
+  padding: 16px 20px; font-weight: 500;
+  font-size: 15px; color: var(--c-dark);
+  cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center;
+  user-select: none;
+}
+.faq-q i { font-size: 16px; color: var(--c-purple3); transition: transform .2s; flex-shrink: 0; }
+.faq-item.open .faq-q i { transform: rotate(180deg); }
+.faq-a {
+  padding: 0 20px; max-height: 0; overflow: hidden;
+  transition: max-height .3s ease, padding .3s ease;
+  font-size: 14px; color: var(--c-mid); line-height: 1.65;
+}
+.faq-item.open .faq-a { max-height: 200px; padding: 0 20px 16px; }
+
+/* Metrics highlight */
+.metrics-block {
+  background: linear-gradient(135deg, rgba(74,53,212,0.06), rgba(74,138,244,0.06));
+  border: 0.5px solid rgba(100,80,220,0.18);
+  border-radius: var(--radius-lg);
+  padding: 28px; margin: 28px 0;
+}
+.metrics-block h4 { font-size: 15px; font-weight: 600; color: var(--c-dark); margin-bottom: 14px; }
+.metrics-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.metric-item { }
+.metric-val { font-size: 22px; font-weight: 700; color: var(--c-purple2); letter-spacing: -0.5px; }
+.metric-label { font-size: 12px; color: var(--c-muted); margin-top: 2px; }
+
+/* Article CTA */
+.article-cta {
+  background: var(--c-bg2);
+  border: 0.5px solid var(--c-border);
+  border-radius: var(--radius-lg);
+  padding: 28px; margin: 40px 0;
+  display: flex; gap: 20px; align-items: center;
+}
+.article-cta-icon {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: rgba(123,92,245,0.12);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.article-cta-icon i { font-size: 22px; color: var(--c-purple3); }
+.article-cta h3 { font-size: 16px; font-weight: 600; color: var(--c-dark); margin-bottom: 4px; }
+.article-cta p { font-size: 13px; color: var(--c-mid); margin: 0; }
+.article-cta a {
+  margin-left: auto; flex-shrink: 0;
+  background: var(--c-purple); color: #fff;
+  font-size: 13px; font-weight: 500;
+  border-radius: var(--radius-md); padding: 10px 20px;
+  text-decoration: none; white-space: nowrap;
+  transition: background .15s;
+}
+.article-cta a:hover { background: #5B46E5; }
+
+/* Disclaimer */
+.disclaimer {
+  font-size: 12px; color: #9090B0;
+  border-top: 0.5px solid var(--c-border);
+  padding-top: 20px; margin-top: 40px; line-height: 1.6;
+}
+
+/* SIDEBAR */
+.post-sidebar { position: sticky; top: 88px; }
+.sidebar-toc {
+  background: var(--c-bg2);
+  border: 0.5px solid var(--c-border);
+  border-radius: var(--radius-lg);
+  padding: 24px 20px; margin-bottom: 20px;
+}
+.sidebar-toc-title {
+  font-size: 11px; font-weight: 600; letter-spacing: 1.5px;
+  text-transform: uppercase; color: #4A3890; margin-bottom: 16px;
+}
+.toc-list { list-style: none; }
+.toc-list li { margin-bottom: 10px; }
+.toc-list a {
+  font-size: 13px; color: var(--c-muted); text-decoration: none;
+  line-height: 1.4; transition: color .15s; display: block;
+}
+.toc-list a:hover { color: var(--c-purple); }
+.toc-list a.active { color: var(--c-purple); font-weight: 500; }
+
+.sidebar-cta {
+  background: linear-gradient(140deg, #6644EE, #4A8AF4);
+  border-radius: var(--radius-lg); padding: 24px 20px; text-align: center;
+}
+.sidebar-cta h3 { font-size: 16px; font-weight: 600; color: #fff; margin-bottom: 8px; }
+.sidebar-cta p { font-size: 13px; color: rgba(255,255,255,0.82); margin-bottom: 18px; line-height: 1.55; }
+.sidebar-cta a {
+  display: block; background: #fff; color: var(--c-purple);
+  font-size: 14px; font-weight: 600;
+  border-radius: var(--radius-md); padding: 11px 20px;
+  text-decoration: none; transition: transform .15s, box-shadow .15s;
+}
+.sidebar-cta a:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+
+/* FOOTER */
+.footer { background: #120A50; padding: 32px 48px 24px; }
+.footer-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+.footer-logo { font-size: 18px; font-weight: 700; color: #fff; letter-spacing: -0.5px; text-decoration: none; }
+.footer-logo span { color: #9B80FF; }
+.footer-tg {
+  display: flex; align-items: center; gap: 9px; text-decoration: none;
+  background: rgba(255,255,255,0.08); border: 0.5px solid rgba(255,255,255,0.15);
+  border-radius: var(--radius-sm); padding: 9px 18px; transition: background .15s;
+}
+.footer-tg:hover { background: rgba(255,255,255,0.15); }
+.footer-tg i { font-size: 17px; color: #9B80FF; }
+.footer-tg span { font-size: 14px; color: #C0B0FF; font-weight: 500; }
+.footer-divider { width: 100%; height: 0.5px; background: rgba(255,255,255,0.08); margin-bottom: 18px; }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.footer-copy { font-size: 13px; color: rgba(255,255,255,0.3); }
+.footer-legal { display: flex; gap: 24px; flex-wrap: wrap; }
+.footer-legal a { font-size: 13px; color: rgba(255,255,255,0.4); text-decoration: none; transition: color .15s; }
+.footer-legal a:hover { color: rgba(255,255,255,0.75); }
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .nav { padding: 14px 20px; }
+  .nav-links { display: none; }
+  .post-hero { padding: 100px 20px 40px; }
+  .post-layout { grid-template-columns: 1fr; padding: 32px 20px 60px; gap: 32px; }
+  .post-sidebar { position: static; }
+  .article-cta { flex-direction: column; }
+  .article-cta a { margin-left: 0; }
+  .metrics-row { grid-template-columns: 1fr 1fr; }
+  .footer { padding: 28px 20px 20px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="index.html" class="nav-logo">Mak<span>ads</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#services">Услуги</a></li>
+    <li><a href="index.html#how">Как работаю</a></li>
+    <li><a href="index.html#cases">Кейсы</a></li>
+    <li><a href="blog.html" class="active">Блог</a></li>
+  </ul>
+  <a href="index.html#contact" class="nav-btn">Оставить заявку</a>
+</nav>
+
+<!-- HERO -->
+<div class="post-hero">
+  <div class="post-hero-inner">
+    <div class="post-breadcrumb">
+      <a href="blog.html">Блог</a>
+      <i class="ti ti-chevron-right"></i>
+      <span>Яндекс.Директ</span>
+    </div>
+    <span class="post-tag">Яндекс.Директ</span>
+    <h1>Как привлекать клиентов в барбершоп через интернет: рабочие каналы, стоимость рекламы и ошибки, которые мешают получать записи</h1>
+    <div class="post-meta">
+      <span><i class="ti ti-calendar"></i> 15 июня 2025</span>
+      <span><i class="ti ti-clock"></i> 8 минут</span>
+    </div>
+  </div>
+</div>
+
+<!-- LAYOUT -->
+<div class="post-layout">
+
+  <article class="post-content">
+
+    <p class="post-lead">Каждый месяц десятки мужчин в вашем городе ищут новый барбершоп. Вопрос в другом — увидят ли они именно ваш? Сегодня качественного сервиса уже недостаточно: конкуренция растёт, а большинство новых записей начинается с поиска в интернете.</p>
+
+    <h2 id="path">Как клиенты выбирают барбершоп</h2>
+    <p>Перед тем как запускать рекламу, важно понимать путь клиента. Обычно он выглядит так: возникла необходимость постричься → человек открывает поиск или карты → сравнивает несколько барбершопов → изучает цены, фото и отзывы → записывается.</p>
+    <p>На решение влияют всего несколько факторов: расстояние до салона, рейтинг, отзывы, фотографии работ, стоимость и возможность быстро записаться онлайн. Именно поэтому интернет-маркетинг должен закрывать каждый из этих этапов.</p>
+
+    <h2 id="channels">Какие каналы продвижения работают</h2>
+    <p>Универсального инструмента не существует. Максимальный эффект даёт комбинация нескольких каналов.</p>
+
+    <table>
+      <thead>
+        <tr><th>Канал</th><th>Когда работает лучше всего</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Яндекс.Директ</td><td>Нужно получать заявки уже сегодня</td></tr>
+        <tr><td>SEO</td><td>Нужен стабильный поток клиентов в долгую</td></tr>
+        <tr><td>Яндекс Карты</td><td>Клиенты ищут рядом с собой</td></tr>
+        <tr><td>VK Реклама</td><td>Для формирования спроса и акций</td></tr>
+        <tr><td>Telegram Ads</td><td>Если есть собственный канал или сеть барбершопов</td></tr>
+        <tr><td>Ретаргетинг</td><td>Возвращает тех, кто уже интересовался</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="direct">Контекстная реклама в Яндекс.Директ</h2>
+    <p>Это самый быстрый способ начать получать новых клиентов. Реклама показывается людям, которые уже ищут барбершоп, мужскую стрижку, оформление бороды, fade или камуфляж седины — то есть работает с готовым спросом.</p>
+    <p>Но именно здесь владельцы бизнеса совершают больше всего ошибок: ведут рекламу на главную страницу сайта, запускают одну кампанию на все услуги, используют слишком широкие ключевые запросы, не подключают аналитику. В результате стоимость записи оказывается в два раза выше, чем могла бы быть.</p>
+    <p>В хорошем объявлении должны быть: цена «от», реальные фотографии, информация об акции, кнопка онлайн-записи и быстрые ссылки на популярные услуги.</p>
+
+    <div class="article-cta">
+      <div class="article-cta-icon" aria-hidden="true"><i class="ti ti-scissors"></i></div>
+      <div>
+        <h3>Запустить рекламу для барбершопа?</h3>
+        <p>Настрою Яндекс.Директ с разбивкой по услугам — стрижка, борода, детская, fade. С аналитикой и отчётом</p>
+      </div>
+      <a href="index.html#contact">Обсудить задачу</a>
+    </div>
+
+    <h2 id="seo">SEO-продвижение барбершопа</h2>
+    <p>Если реклама перестаёт работать сразу после отключения бюджета, SEO продолжает приводить клиентов месяцами. Поисковое продвижение особенно эффективно для запросов: «барбершоп в Москве», «мужская стрижка цена», «оформить бороду», «лучший барбершоп».</p>
+    <p>Чтобы сайт занимал высокие позиции, нужно создать отдельные страницы услуг, написать экспертные статьи, оптимизировать скорость, настроить микроразметку и регулярно публиковать новый контент.</p>
+    <p>Многие считают, что блог нужен только интернет-магазинам. На самом деле именно статьи помогают привлекать аудиторию, которая пока ещё не готова записаться: «как часто нужно стричься мужчине», «чем барбершоп отличается от парикмахерской», «как выбрать форму бороды». Такие статьи собирают поисковый трафик и постепенно превращают читателей в клиентов.</p>
+
+    <h2 id="maps">Продвижение через Яндекс Карты</h2>
+    <p>Для локального бизнеса карты иногда дают больше записей, чем сайт. Пользователь часто открывает приложение, когда уже готов выбрать ближайший барбершоп.</p>
+    <p>Чтобы карточка работала эффективно, регулярно обновляйте фотографии, отвечайте на отзывы, публикуйте акции и проверяйте актуальность графика работы. Чем выше рейтинг и активность карточки, тем чаще она появляется в рекомендациях.</p>
+
+    <h2 id="social">Социальные сети продают доверие</h2>
+    <p>Барбершоп — это визуальная услуга. Лучше всего работают видео процесса, фотографии «до/после», Reels, отзывы клиентов, знакомство с мастерами и советы по уходу. Такой контент помогает человеку почувствовать атмосферу ещё до первого визита.</p>
+
+    <h2 id="analytics">Почему аналитика важнее бюджета</h2>
+    <p>Одна из самых распространённых ошибок — оценивать рекламу только по количеству кликов. На самом деле важно считать стоимость записи, стоимость нового клиента, конверсию сайта и процент повторных клиентов.</p>
+
+    <div class="metrics-block">
+      <h4>Пример: два барбершопа тратят по 70 000 ₽ в месяц</h4>
+      <div class="metrics-row">
+        <div class="metric-item">
+          <div class="metric-val">45</div>
+          <div class="metric-label">новых клиентов у первого</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-val">70</div>
+          <div class="metric-label">новых клиентов у второго</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-val">80%</div>
+          <div class="metric-label">возвращаются к первому</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-val">30%</div>
+          <div class="metric-label">возвращаются ко второму</div>
+        </div>
+      </div>
+      <p style="font-size:13px;color:var(--c-mid);margin-top:16px;margin-bottom:0;">Итог: первый барбершоп окажется значительно прибыльнее в долгосрочной перспективе — несмотря на меньшее число новых клиентов.</p>
+    </div>
+
+    <h2 id="mistakes">Типичные ошибки при продвижении</h2>
+    <div class="errors-list">
+      <div class="error-item">
+        <div class="error-num">1</div>
+        <div>
+          <h4>Нет сайта</h4>
+          <p>Человек не может посмотреть цены, услуги и записаться онлайн</p>
+        </div>
+      </div>
+      <div class="error-item">
+        <div class="error-num">2</div>
+        <div>
+          <h4>Нет аналитики</h4>
+          <p>Никто не знает, какая реклама приносит клиентов, а какая сливает бюджет</p>
+        </div>
+      </div>
+      <div class="error-item">
+        <div class="error-num">3</div>
+        <div>
+          <h4>Все услуги рекламируются одинаково</h4>
+          <p>Стрижка, оформление бороды и детская стрижка требуют разных кампаний</p>
+        </div>
+      </div>
+      <div class="error-item">
+        <div class="error-num">4</div>
+        <div>
+          <h4>Нет работы с отзывами</h4>
+          <p>Отзывы — один из главных факторов выбора барбершопа</p>
+        </div>
+      </div>
+      <div class="error-item">
+        <div class="error-num">5</div>
+        <div>
+          <h4>Медленный сайт</h4>
+          <p>Если сайт открывается дольше трёх секунд, часть пользователей уйдёт к конкурентам</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="plan">План запуска продвижения за 30 дней</h2>
+    <div class="plan-grid">
+      <div class="plan-week">
+        <div class="plan-week-label">Неделя 1</div>
+        <ul>
+          <li>Проведите аудит сайта</li>
+          <li>Настройте веб-аналитику</li>
+          <li>Подготовьте карточки услуг</li>
+          <li>Обновите информацию в Яндекс Картах</li>
+        </ul>
+      </div>
+      <div class="plan-week">
+        <div class="plan-week-label">Неделя 2</div>
+        <ul>
+          <li>Запустите рекламу в Яндекс.Директ</li>
+          <li>Разделите кампании по услугам</li>
+          <li>Подключите отслеживание заявок</li>
+        </ul>
+      </div>
+      <div class="plan-week">
+        <div class="plan-week-label">Неделя 3</div>
+        <ul>
+          <li>Начните вести блог</li>
+          <li>Опубликуйте 2–3 экспертные статьи</li>
+          <li>Соберите семантическое ядро для SEO</li>
+        </ul>
+      </div>
+      <div class="plan-week">
+        <div class="plan-week-label">Неделя 4</div>
+        <ul>
+          <li>Проанализируйте стоимость заявки</li>
+          <li>Отключите неэффективные ключевые слова</li>
+          <li>Перераспределите бюджет в пользу лучших кампаний</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 id="faq">Частые вопросы</h2>
+
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">Что лучше для барбершопа — SEO или Яндекс.Директ? <i class="ti ti-chevron-down"></i></div>
+      <div class="faq-a">Если нужны заявки уже сейчас, быстрее результат даст Яндекс.Директ. Для стабильного потока клиентов в долгосрочной перспективе стоит инвестировать в SEO. На практике эти инструменты работают эффективнее всего в связке.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">Нужен ли сайт, если есть группа во ВКонтакте? <i class="ti ti-chevron-down"></i></div>
+      <div class="faq-a">Да. Сайт позволяет продвигаться в поисковых системах, запускать контекстную рекламу и собирать аналитику. Социальные сети хорошо дополняют сайт, но не заменяют его.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">Сколько нужно тратить на рекламу? <i class="ti ti-chevron-down"></i></div>
+      <div class="faq-a">Бюджет зависит от города, конкуренции и ваших целей. Гораздо важнее не сумма вложений, а качество настройки рекламы и аналитики. При грамотном подходе даже небольшой бюджет может приносить стабильный поток заявок.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">Через сколько SEO начнёт приносить клиентов? <i class="ti ti-chevron-down"></i></div>
+      <div class="faq-a">Первые результаты обычно появляются через 3–6 месяцев. При этом качественное поисковое продвижение даёт долгосрочный эффект и позволяет получать целевой трафик без оплаты каждого перехода.</div>
+    </div>
+
+    <h2 id="conclusion">Вывод</h2>
+    <p>Продвижение барбершопа — это не выбор между рекламой, SEO или соцсетями. Это создание системы, в которой каждый канал решает свою задачу. Контекстная реклама помогает быстро получать заявки. SEO формирует стабильный поток. Карты привлекают локальных клиентов. Соцсети укрепляют доверие. А аналитика позволяет понять, какие вложения действительно приносят прибыль.</p>
+    <p>Если выстроить эти инструменты в единую систему, маркетинг перестаёт быть расходом и становится предсказуемым источником новых клиентов.</p>
+
+  </article>
+
+  <!-- SIDEBAR -->
+  <aside class="post-sidebar">
+    <div class="sidebar-toc">
+      <div class="sidebar-toc-title">Содержание</div>
+      <ul class="toc-list">
+        <li><a href="#path">Путь клиента</a></li>
+        <li><a href="#channels">Какие каналы работают</a></li>
+        <li><a href="#direct">Яндекс.Директ</a></li>
+        <li><a href="#seo">SEO-продвижение</a></li>
+        <li><a href="#maps">Яндекс Карты</a></li>
+        <li><a href="#social">Соцсети</a></li>
+        <li><a href="#analytics">Аналитика</a></li>
+        <li><a href="#mistakes">Типичные ошибки</a></li>
+        <li><a href="#plan">План на 30 дней</a></li>
+        <li><a href="#faq">Частые вопросы</a></li>
+        <li><a href="#conclusion">Вывод</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-cta">
+      <h3>Нужна реклама для барбершопа?</h3>
+      <p>Настрою Яндекс.Директ с разбивкой по услугам — с отчётами и прозрачными результатами</p>
+      <a href="index.html#contact">Оставить заявку</a>
+    </div>
+  </aside>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <a href="index.html" class="footer-logo">Mak<span>ads</span></a>
+    <a href="https://t.me/+mLtKrqMsWK05MjQy" class="footer-tg" target="_blank" rel="noopener">
+      <i class="ti ti-brand-telegram" aria-hidden="true"></i>
+      <span>Telegram-канал</span>
+    </a>
+  </div>
+  <div class="footer-divider"></div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Makads. Интернет-реклама для бизнеса</div>
+    <div class="footer-legal">
+      <a href="https://workhardmarish.github.io/makads/privacy/">Политика обработки персональных данных</a>
+      <a href="https://workhardmarish.github.io/makads/privacy/adv">Согласие на получение рекламных предложений</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleFaq(el) { el.classList.toggle('open'); }
+
+const headings = document.querySelectorAll('.post-content h2[id]');
+const tocLinks = document.querySelectorAll('.toc-list a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  headings.forEach(h => { if (window.scrollY >= h.offsetTop - 120) current = h.id; });
+  tocLinks.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+}, { passive: true });
+</script>
+</body>
+</html>
